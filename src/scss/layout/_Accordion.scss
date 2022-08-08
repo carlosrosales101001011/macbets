@@ -1,0 +1,216 @@
+// .active_accordion{
+//     animation: 1s rotateItem forwards;
+// }
+// .desactive_accordion{
+//     animation: 1s rotateItem backwards;
+// }
+// @keyframes rotateItem {
+//     0% {
+//         transform: rotate(0deg);
+//     }
+//     100% {
+//         transform: rotate(-180deg);
+//     }
+// }
+
+
+
+
+
+
+/* * {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #EEE;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+header {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	padding: 15px;
+	background-color: #3c3c3c;
+	border-bottom: 3px solid #56E3B8;
+}
+
+header h1 {
+	color: #EEE;
+	font-size: 28px;
+	font-weight: 700;
+	text-transform: uppercase;
+} */
+
+.faqs {
+	width: 100%;
+	margin: 0 ;
+	padding: 2px;
+}
+
+.faqs .faq {
+    margin: 12px;
+	padding: 12px;
+	background-color: $backgroundAccordion;
+	border-radius: 8px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.faqs .faq .faq-question {
+	position: relative;
+	font-size: 20px;
+	padding-right: 80px;
+	cursor: pointer;
+
+	transition: all 0.4s ease;
+
+}
+
+.faqs .faq .faq-question::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: 0px;
+	transform: translateY(-50%);
+	width: 30px;
+	height: 30px;
+
+	background-image: url('../../svgs/arrow-down.svg');
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+
+	transition: all 0.4s ease-out;
+}
+
+.faqs .faq .faq-answer {
+
+	
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+	margin: 0 2rem;
+
+	opacity: 0;
+	max-height: 0;
+	overflow-y: hidden;
+	transition: all 0.4s ease-out;
+}
+
+.faqs .faq.open .faq-question {
+	margin-bottom: 15px;
+}
+
+.faqs .faq.open .faq-question::after {
+	transform: translateY(-50%) rotate(180deg);
+}
+
+.faqs .faq.open .faq-answer {
+	max-height: 1000px;
+	opacity: 1;
+}
+
+
+
+//************************************************************************************************************************************************
+
+
+// @import url(https://fonts.googleapis.com/css?family=Quicksand:300,400,700);
+
+
+// .accordion {
+//    -webkit-box-shadow: 0px 13px 23px -13px rgba(0,0,0,0.5);
+//    background-color: transparent;
+//    margin: auto;
+//    margin-top: 50px;
+// }
+
+// .title {
+// 	display: flex;
+// 	flex-direction: row-reverse;
+// 	align-items:center;
+// 	justify-content: space-between;
+
+//   background-color: rgba(0,0,0, .4);
+//   color: #ffddcc;
+//   text-transform: uppercase;
+//   letter-spacing: 1px;
+//   text-align: left;
+//   line-height: 2;
+//   font-weight: lighter;
+//   position: relative;
+//   padding: 10px;
+//   z-index: 2000;
+//   border-radius: 4px;
+//   margin-top: 2px;
+//   transition: all .2s ease-in;
+// }
+
+// .title-text {
+//   margin-left: 10px;
+// }
+
+// .title:hover {
+//   cursor: pointer;
+//   background-color: rgba(0,0,0, .5);
+// }
+
+// .title:active {
+//   background-color: rgba(0, 0, 0, .55);
+// }
+
+// .content {
+//   height: 30px;
+//   width: auto;
+//   background-color: transparent;
+//   border-radius: 4px;
+//   color: white;
+//   font-size: 14px;
+//   text-align: center;
+//   position: relative;
+//   z-index: 1000;
+//   margin-top: -30px;
+//   text-align: left;
+//   transition: all 200ms cubic-bezier(0.600, -0.280, 0.735, 0.045);
+// }
+
+// .content-open {
+//   margin-top: 0px;
+//   height: auto;
+//   background-color: rgba(0,0,0);
+//   transition: all 350ms cubic-bezier(0.080, 1.090, 0.320, 1.275);
+// }
+
+// .content-text {
+//   padding: 15px;
+//   opacity: 0;
+// }
+
+// .content-text-open {
+//   opacity: 1;
+// }
+
+// .angle-down {
+// 	width: 2rem;
+// 	height: 2rem;
+//   	color: rgba(0, 0, 0, 0.5);
+//   	transition: all .6s cubic-bezier(0.080, 1.090, 0.320, 1.275);
+// }
+
+// .rotate-180 {
+//   color: rgba(255,255,255, 1);
+//   transform: rotate(180deg);
+//   transition: all .2s ease-in;
+// }
+

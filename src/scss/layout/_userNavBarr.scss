@@ -1,0 +1,63 @@
+
+//*DENTRO DE USER
+.linex{
+    display: flex;
+    flex-direction: row;
+    padding: .5rem 0;
+    align-items: center;
+    // background-color: red;
+    cursor: pointer;
+    .photoUser{
+        padding: .3px 1.3rem .3px 4rem;
+        p{
+            padding: 1rem 1.3rem;
+            color: white;
+            background-color: black;
+            
+            border-radius: 50%;
+        }
+    }
+    .nameUser_MACS{
+        padding: 0 !important;
+        p{
+            font-size: calc(1.4rem + 1vmin);
+            // font-weight: bold;
+            // font-family: 'Exo 2', sans-serif;
+            font-family: 'Dosis', sans-serif;
+            
+        align-items: center;
+        }
+    }
+}
+.optionsLine{
+    ul{
+        text-decoration: none;
+        list-style: none;
+        width: 100%;
+        li{
+            // background-color:red;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            // width: 100%;
+            cursor: pointer;
+            padding: 1rem 0;
+            font-size:1.1rem;
+            color: gray;
+            align-items: center;
+            &:hover{
+                background-color: #f1f1f1;
+            }
+            p{
+                font-size:1.5rem;
+            }
+            a{
+            }
+        }
+    }
+}
+.nameBTN{
+    p{
+        font-size:1.7rem;
+    }
+}
