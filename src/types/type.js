@@ -29,4 +29,7 @@ export const types={
     
     uiIsOpenMenu: '[ui] Open Menu',
     uiIsCloseMenu: '[ui] Close Menu',
+    
+    betResaltada: 'bet Resaltada', 
+    DeleteRows: 'Delete Rows'
 }

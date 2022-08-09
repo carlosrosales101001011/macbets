@@ -13,17 +13,22 @@ export const ListCardApuesta = ({keyId, acordiones, bets, titulo, subtitulo, fec
   
   const [stateModal1, setstateModal1] = useState(false);
 
+
+
+
   const [faqs, setfaqs] = useState(
     acordiones.map(a=> (
                           {
                             id: a.id, 
                             question: a.name, 
-                            answer: a.bets.map((bet, index)=> <Bet key={index} date={fecha} time={hora} stateunBet={bet.statement} codeBet={bet.code} multiplied={bet.multiplied} codigo={codigobet} idAccordion={a.id} nameAccordion={a.name} numbet={index+1} />), 
+                            answer: a.bets.map((bet, index)=> <Bet key={index} isDisabled={bet.inCupon} date={fecha} time={hora} stateunBet={bet.statement} codeBet={bet.code} multiplied={bet.multiplied} codigo={codigobet} idAccordion={a.id} nameAccordion={a.name} numbet={index+1} />), 
                             open: a.id===1 ? true: false 
                           }
                         )
                   ));
-  //  console.log(acordiones.map(a=>a.name));
+  
+
+  
   const len = acordiones.map(a=>a.bets.map(b=>b))
   const cantidaDeBets = len.map(c=> c.length)
   const reducer = (accumulator, curr) => accumulator + curr;
@@ -48,19 +53,7 @@ export const ListCardApuesta = ({keyId, acordiones, bets, titulo, subtitulo, fec
       </div>
       <div className="bodyContainer">
         {
-        acordiones[0].bets.map((bet, index)=> 
-          <Bet 
-            key={index} 
-            date={fecha} 
-            time={hora}
-            stateunBet={bet.statement} 
-            multiplied={bet.multiplied} 
-            codigo={codigobet} 
-            codeBet={bet.code}
-            idAccordion={1} 
-            nameAccordion={acordiones[0].name}
-            numbet={index+1} 
-          />)
+          faqs[0].answer
         }
       </div>
       <div className="footContainer">

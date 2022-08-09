@@ -2,13 +2,21 @@ import React from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components'
-import { EventStartRemoveBetInCartilla, EventUpdateProductMultiplieds, ResetCartilla, UpdateEarningsMACS } from '../action/BetInCartilla';
+import { DeleteRows, EventStartRemoveBetInCartilla, EventUpdateProductMultiplieds, ResaltarBet, ResetCartilla, UpdateEarningsMACS } from '../action/BetInCartilla';
+
+
+
 export const CartillaLateral = () => {
   const [cuponOpen, setcuponOpen] = useState(false);
+
   const { Row, maxRow, maxRowBool, rowLength } = useSelector((state) => state.showBet);
+  
+  // const { showBet} = useSelector((state) => state);
+
   const dispatch= useDispatch();
+
   const ClickReset=()=> dispatch(ResetCartilla());
-  console.log(cuponOpen);
+  // console.log(cuponOpen);
   const Clickcupon = ()=>{
     setcuponOpen(!cuponOpen);
   }
@@ -42,24 +50,26 @@ export const CartillaLateral = () => {
           dispatch(ResetCartilla());
         } 
   }
-  const clickDeleteRows = ()=>{
-
+  const clickDeleteRows = (codigo)=>{
+    // console.log(codigo);
+    dispatch(DeleteRows(codigo));
   }
-
+  // dispatch(ResaltarBet());
+  //console.log();
 
   return (
     <>
     <CartillaContenedor style={{transform: `translateY(${cuponOpen?'0': '35rem'})`}}>
         <ContainerHeader onClick={Clickcupon}>
           <p>Cupon de apuesta ({rowLength})</p>
-          <div className='angle-down' onClick={()=>clickDeleteRows()}></div>
+          <div className='angle-down'></div>
         </ContainerHeader>
         <ContainerBody style={{height: `35rem`}}>
               {newArr.map((itema, index)=>(
               <ContentApuesta key={index}>
                 <HeaderApuesta>
                 <span>{itema.codigo}</span>
-                <div className='icon-cross'></div>
+                <div className='icon-cross' onClick={()=>clickDeleteRows(itema.codigo)}></div>
                 </HeaderApuesta>
                 <BodyApuesta>
                   {itema.bets.map((itemb, indexb)=>(

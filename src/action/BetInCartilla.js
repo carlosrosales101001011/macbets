@@ -48,6 +48,14 @@ export const RemoveBetInCartilla = (event)=>({
     type: types.uiRemoveBetInCartilla,
     payload: event
 })
+export const ResaltarBet = (event)=>({
+    type: types.betResaltada,
+    payload: event
+})
+export const DeleteRows = (event)=>({
+    type: types.DeleteRows,
+    payload: event
+})
 export const UpdateAmountBetInCartilla = (event)=>({
     type: types.uiUpdateAmount,
     payload: event

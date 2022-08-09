@@ -101,7 +101,25 @@ export const uiBetInCartilla = (state = initialState, action) => {
                 maxTime: '',
                 amount: '0'
             }
-        
+        case types.betResaltada:
+            // const btnEnabled = state.Row.find(e=>e.codeBet===action.payload)
+            const btnEnabled = state
+            // btnEnabled.inCupon=true;
+            // console.log(action.payload);
+            console.log(btnEnabled);
+            return {
+                ...state,
+                // rowLength: state.Row.length - 1,
+                // Row: [...state.Row.filter(row => row !== rowDelete)],
+            }
+        case types.DeleteRows:
+            // const rows = state.Row.filter(r=> r.codigo===action.payload)
+            console.log(action.payload);
+            return{
+                ...state,
+                rowLength: state.Row.length - 1,
+                Row: [...state.Row.filter(row => row.codigo !== action.payload)],
+            }
         default:
             return state;
     }
