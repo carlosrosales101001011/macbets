@@ -5,11 +5,6 @@ import { Provider } from 'react-redux';
 // import {App} from './App';
 import '../src/scss/app.scss';
 import { App } from './App';
-import { MACBetsBody } from './components/MACBetsBody';
-import { Accordion } from './components/makeAccordion/Accordion';
-import { Navbar } from './components/Navbar';
-import { NavbarNavigation } from './components/NavbarNavigation';
-import { UnApuesta } from './components/UnApuesta';
 import { store } from './store/store';
 // import reportWebVitals from './reportWebVitals';
 

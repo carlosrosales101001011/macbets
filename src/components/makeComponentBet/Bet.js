@@ -20,7 +20,6 @@ import ReactTooltip from 'react-tooltip';
 import {ToastsContainer, ToastsStore, ToastsContainerPosition} from 'react-toasts';
 import { NewArray } from "../../helpers/ArrayCodexCode";
 
-// import { Cartilla } from '../Cartilla';
 
 export const Bet = ({
   stateunBet,
