@@ -1,16 +1,24 @@
 import React from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import ReactTooltip from 'react-tooltip';
 import styled from 'styled-components'
 import { DeleteRows, EventStartRemoveBetInCartilla, EventUpdateProductMultiplieds, ResaltarBet, ResetCartilla, UpdateEarningsMACS } from '../action/BetInCartilla';
-
+import {ToastsContainer, ToastsStore, ToastsContainerPosition} from 'react-toasts';
+import { NewArray } from '../helpers/ArrayCodexCode';
+import { ErrorsInLoadRow } from './ErrorsInLoadRow';
+import { ContenedorInformations } from './ContenedorInformations';
+import { Range } from './makeRangeforCartilla/Range';
+import { ContentApuesta } from './ContentApuesta';
+import { EmptyHtml } from './EmptyHtml';
+import Select from 'react-select';
 
 
 export const CartillaLateral = () => {
   const [cuponOpen, setcuponOpen] = useState(false);
 
   const { Row, maxRow, maxRowBool, rowLength } = useSelector((state) => state.showBet);
-  
+  const [bets, setbets] = useState(false);
   // const { showBet} = useSelector((state) => state);
 
   const dispatch= useDispatch();
@@ -22,76 +30,98 @@ export const CartillaLateral = () => {
   }
 
   //TODO: PARA JUNTAR LAS APUESTAS DEPENDIENDO DEL CODIGO
-  const arrayMap = Row.map((item) => {
-    return [item.codigo, item];
-  });
-  const countriesMapArr = new Map(arrayMap);
   
-  const uniqArr = [...countriesMapArr.values()];
-
-  const newArr = uniqArr.map((e) => {
-    return {
-      codigo: e.codigo,
-      comienza: e.comienza,
-      n_bet: e.n_bet,
-      bets: Row
-        .filter((item) => item.codigo === e.codigo)
-        .map(({codigo, comienza, n_bet, statement, accordionStatement, multiplicador, codeBet}) => {return {statement, accordionStatement, multiplicador, codeBet}}),
-    };
-  });
   //TODO: FIN -------------------------------------------------------------
   const clickDeleteRow =(index)=>{
-    console.log(index);
       dispatch(EventStartRemoveBetInCartilla(index));
       dispatch(EventUpdateProductMultiplieds())
       dispatch(UpdateEarningsMACS())
       // dispatch(EventUpdateRemoveOneMultiplieds())
+      ToastsStore.error("Eliminaste una Apuesta de tu cupon", 3700)
       if(Row.length === 1){
           dispatch(ResetCartilla());
         } 
-  }
+      }
   const clickDeleteRows = (codigo)=>{
-    // console.log(codigo);
+    const RowRemoved = Row.filter(r=>r.codigo===codigo).length
+    ToastsStore.error("Eliminaste "+ RowRemoved + " apuesta de tu cupon", 3700)
     dispatch(DeleteRows(codigo));
   }
-  // dispatch(ResaltarBet());
-  //console.log();
+  
+  const options = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' },
+  ];
+  // const state = {
+  //   selectedOption: null,
+  // };
+  // const handleChange = (selectedOption) => {
+  //   this.setState({ selectedOption }, () =>
+  //     console.log(`Option selected:`, state.selectedOption)
+  //   );
+  // };
+  // const { selectedOption } = state;
+  const [selectedOption, setselectedOption] = useState(null);
 
+  const styleSumaArr = ["4 rem", "35 rem", "15 rem"];
+  // console.log(styleSumaArr.map(e=> e.replace(' ', '')));
+  // console.log(Row);
+  // console.log(styleSumaArr[0].split(' ')[1]);
+  const reducer = (accumulator, curr) => accumulator + curr;
+  const styleRepCupon={padding: '5px', backgroundColor: '#DFDFDF'}
   return (
     <>
-    <CartillaContenedor style={{transform: `translateY(${cuponOpen?'0': '35rem'})`}}>
+    <ToastsContainer store={ToastsStore} position={ToastsContainerPosition.BOTTOM_LEFT}/>
+    <CartillaContenedor style={{transform: `translateY(${cuponOpen?'0': styleSumaArr.map(e=> Number(e.split(' ')[0])).reduce(reducer)+styleSumaArr[0].split(' ')[1]})`}}>
         <ContainerHeader onClick={Clickcupon}>
-          <p>Cupon de apuesta ({rowLength})</p>
+          <p>Cupon de apuesta ({Row.length})</p>
           <div className='angle-down'></div>
         </ContainerHeader>
-        <ContainerBody style={{height: `35rem`}}>
-              {newArr.map((itema, index)=>(
-              <ContentApuesta key={index}>
-                <HeaderApuesta>
-                <span>{itema.codigo}</span>
-                <div className='icon-cross' onClick={()=>clickDeleteRows(itema.codigo)}></div>
-                </HeaderApuesta>
-                <BodyApuesta>
-                  {itema.bets.map((itemb, indexb)=>(
-                  <div className='Apuesta-row' key={indexb}>
-                    <div className='statementBet'>
-                      <span>{itemb.accordionStatement}</span>
-                      <span>{itemb.statement}</span>
-                    </div>
-                    <div>
-                      <div className='multipliedCuota'>
-                        x{itemb.multiplicador}
-                      </div>
-                      <div className='icon-cross' onClick={()=>clickDeleteRow(itemb.codeBet)}></div>
-                    </div>
-                  </div>
-                  ))}
-                </BodyApuesta>
-              </ContentApuesta>
-              ))}
+        <ContainerType style={{...{height: styleSumaArr[0].replace(' ', '')}, ...styleRepCupon}}>
+          <span className='containerSelect'>
+            <Select 
+              className='optionSelect'
+              isClearable={false}
+              isDisabled={false}
+              isSearchable={false}
+              defaultValue={options[0]} 
+              onChange={setselectedOption} 
+              options={options}
+              />
+          </span>
+          <span onClick={ClickReset} className="btnVaciarCupon">Vaciar cupon</span>
+        </ContainerType>
+        <ContainerBody style={{...{height: styleSumaArr[1].replace(' ', '')}, ...styleRepCupon}}>
+              {
+              Row.length?
+              NewArray(Row).map((itema, index)=>(
+                <ContentApuesta
+                              key={index} 
+                              itema={itema}
+                              codigo={itema.codigo} 
+                              bets={itema.bets} 
+                              clickDeleteRow={clickDeleteRow} 
+                              clickDeleteRows={clickDeleteRows}
+                              />
+                ))
+              : <EmptyHtml msg={"No hay apuesta seleccionada"} fontSize={"20px"}/>
+              }
         </ContainerBody>
-        <ContainerFooter>
-
+        <ContainerFooter style={{...{height: styleSumaArr[2].replace(' ', '')}, ...styleRepCupon}}>
+                    
+        { maxRowBool && ToastsStore.error(`¡Alto!, el numero de filas maxima es de ${maxRow}`, 3700)}
+        <ContenedorInformations/>
+          <Range btnvalue={10}/>
+          <Range btnvalue={20}/>
+          <Range btnvalue={30}/>
+          <Range btnvalue={40}/>
+          <Range btnvalue={50}/>
+          <Range btnvalue={60}/>
+          <Range btnvalue={70}/>
+          <Range btnvalue={80}/>
+          <Range btnvalue={90}/>
+          <Range btnvalue={100}/>
         </ContainerFooter>
     </CartillaContenedor>
     </>
@@ -126,89 +156,50 @@ const ContainerHeader = styled.div`
     background-color: white;
   }
 `
+const ContainerType = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: red !important;
+  .btnVaciarCupon{
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 15px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  .containerSelect{
+    background-color: green;
+    height: auto;
+    .optionSelect{
+    }
+  }
+  .btnVaciarCupon:hover{
+    color: red;
+  }
+`
 const ContainerBody= styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 2px;
   overflow-y: auto;
-  background-color: #DFDFDF;
+  &::-webkit-scrollbar {
+    width: 7px;     /* Tamaño del scroll en vertical */
+    height: 1px;    /* Tamaño del scroll en horizontal */
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #4b6584; 
+    border-radius: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #d1d8e0;
+    border-radius: 4px;
+}
+
+
 `
 const ContainerFooter= styled.div`
-
 `
-const ContentApuesta = styled.div`
-  width: 100%;
-  border-radius: 2px;
-  margin-bottom: 3px;
-  background-color: #EEEEEE;
 
-  -webkit-box-shadow: 0px 0px 18px -2px rgba(0,0,0,0.19);
--moz-box-shadow: 0px 0px 18px -2px rgba(0,0,0,0.19);
-box-shadow: 0px 0px 18px -2px rgba(0,0,0,0.19);
-
-border-radius: 2px 2px 0px 0px;
--moz-border-radius: 2px 2px 0px 0px;
--webkit-border-radius: 2px 2px 0px 0px;
-border: 0px solid #000000;
-`
-const HeaderApuesta = styled.div`
-  display: flex;
-  justify-content: space-between;
-  background-color: #2C3E50;
-  font-size: 16px;
-  font-family: 'Raleway', sans-serif;
-  padding: 3px 10px;
-  width: 100%;
-  .icon-cross{
-    width: 16px;
-    heigth: 16px;
-    cursor: pointer;
-  }
-
-  border-radius: 2px 2px 0px 0px;
--moz-border-radius: 2px 2px 0px 0px;
--webkit-border-radius: 2px 2px 0px 0px;
-border: 0px solid #000000;
-`
-const BodyApuesta = styled.div`
-  .Apuesta-row{
-    height: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 5px;
-    font-family: 'Raleway', sans-serif;
-    background-color: #BDC3C7;
-    border-bottom: 1px solid #95A5A6;
-    .statementBet{
-      font-size: 15px;
-      display: flex;
-      flex-direction: column;
-      padding: 10px 3px;
-      // span:first-child{
-      //   color: #ABB7B7;
-      // }
-      span:last-child{
-        font-weight: bold;
-      }
-    }
-    div:last-child{
-      display: flex;
-      .multipliedCuota{
-        font-size: 12px;
-        margin: 0 7px 0 0;
-      }
-      .icon-cross{
-        width: 20px;
-        heigth: 100%;
-      }
-    }
-
-  }
-  
-`
 //
 // className={`animate__animated ${cuponOpen&&'animate__fadeInUp'}`}
 //TODO: CUPON DE APUESTA EN CIRCULITO

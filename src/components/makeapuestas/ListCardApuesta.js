@@ -5,6 +5,7 @@ import { TimeProgressive } from '../makeATimeProgressive/TimeProgressive';
 import { Bet } from '../makeComponentBet/Bet';
 import { Modal } from '../Modal';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 
 
 export const ListCardApuesta = ({keyId, acordiones, bets, titulo, subtitulo, fecha, hora, codigobet}) => {
@@ -13,15 +14,24 @@ export const ListCardApuesta = ({keyId, acordiones, bets, titulo, subtitulo, fec
   
   const [stateModal1, setstateModal1] = useState(false);
 
-
-
+  const { Row } = useSelector((state) => state.showBet);
+  // console.log(acordiones.map(a=>a.id));
+  // console.log(acordiones.map(a=>a.bets.map(b=>b.code)).flat());
 
   const [faqs, setfaqs] = useState(
     acordiones.map(a=> (
                           {
                             id: a.id, 
                             question: a.name, 
-                            answer: a.bets.map((bet, index)=> <Bet key={index} isDisabled={bet.inCupon} date={fecha} time={hora} stateunBet={bet.statement} codeBet={bet.code} multiplied={bet.multiplied} codigo={codigobet} idAccordion={a.id} nameAccordion={a.name} numbet={index+1} />), 
+                            answer: a.bets.map((bet, index)=> <Bet
+                                                                  key={index} 
+                                                                  numbet={index+1} 
+                                                                  codigo={codigobet}
+                                                                  date={fecha} time={hora} 
+                                                                  codeBet={bet.code} stateunBet={bet.statement} multiplied={bet.multiplied} 
+                                                                  idAccordion={a.id} nameAccordion={a.name} 
+                                                                  // isDisabled={bet.code} 
+                                                              />), 
                             open: a.id===1 ? true: false 
                           }
                         )

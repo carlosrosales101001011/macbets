@@ -114,7 +114,7 @@ export const uiBetInCartilla = (state = initialState, action) => {
             }
         case types.DeleteRows:
             // const rows = state.Row.filter(r=> r.codigo===action.payload)
-            console.log(action.payload);
+            // console.log(action.payload);
             return{
                 ...state,
                 rowLength: state.Row.length - 1,

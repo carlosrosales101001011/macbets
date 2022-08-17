@@ -3,10 +3,15 @@ import styled from 'styled-components'
 
 export const SectionFiltros = () => {
   return (
-    <ContainerFiltros>SectionFiltros</ContainerFiltros>
+    <ContainerFiltros>
+      Filtrar
+      <ul>
+
+      </ul>
+    </ContainerFiltros>
   )
 }
 const ContainerFiltros = styled.div`
-    background-color: red;
+    // background-color: red;
     height: 100%;
 `

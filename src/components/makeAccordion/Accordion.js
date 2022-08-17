@@ -8,9 +8,10 @@ export const Accordion = ({faq, index, toggleFAQ}) => {
         <AccordionItem
             className={"faq " + (faq.open ? 'open' : '')}
             key={index}
+            >
+            <div className="faq-question"
             onClick={() => toggleFAQ(index)}
-        >
-            <div className="faq-question">
+            >
                 {faq.id}. {faq.question}
             </div>
             <ContentAccordion className="faq-answer">

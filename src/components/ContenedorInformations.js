@@ -16,14 +16,14 @@ export const ContenedorInformations = () => {
 const ContenidoInformations = styled.div`
     display: flex;
     flex-direction: column;
-    margin-top: 1.3rem;
-    line-height: 1rem;
+    line-height: 2rem;
+    // padding: 7px;
 `
 const InfQ = styled.span`
-    font-size: 90%;
+    font-size: 77%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    margin-bottom: 0.5rem;
     text-decoration: underline;
+    background-color: red;
 `
 const InfA = styled.span`
     font-size: 80%;

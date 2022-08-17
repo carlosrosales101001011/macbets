@@ -8,6 +8,7 @@ import { ModalWTransition } from './components/makeModalWTransition/ModalWTransi
 import { CartillaLateral } from './components/CartillaLateral';
 import styled from 'styled-components';
 import { SectionFiltros } from './components/SectionFiltros';
+import { TabBar } from './components/makeNavBar/TabBar';
 
 export const App = () => {
   const [stateModal, setStateModal] = useState(true);
@@ -19,6 +20,7 @@ export const App = () => {
         <MACBetsBody/>
         <CartillaLateral/>
       </ContainerBody>
+      {/* <TabBar/> */}
       {/* <Cartilla stateModal1={false}/> */}
     </>
   )
