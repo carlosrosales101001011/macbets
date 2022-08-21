@@ -31,6 +31,8 @@ export const ListCardApuesta = ({keyId, acordiones, bets, titulo, subtitulo, fec
                                                                   codeBet={bet.code} stateunBet={bet.statement} multiplied={bet.multiplied} 
                                                                   idAccordion={a.id} nameAccordion={a.name} 
                                                                   // isDisabled={bet.code}  
+                                                                  titulo={titulo}
+                                                                  subTitulo={subtitulo}
                                                               />), 
                             open: a.id===1 ? true: false 
                           }

@@ -3,11 +3,11 @@ import { useSelector } from 'react-redux';
 import ReactTooltip from 'react-tooltip';
 import styled from 'styled-components'
 
-export const ContentApuesta = ({itema, codigo, bets, clickDeleteRows, clickDeleteRow}) => {
+export const ContentApuesta = ({itema, codigo, bets, titulo, subTitulo, clickDeleteRows, clickDeleteRow}) => {
   return (
     <ContainerApuesta>
     <HeaderApuesta data-tip={codigo}>
-        <span>{codigo}</span>
+        <span>{titulo}: {subTitulo}</span>
         <div className='icon-cross' onClick={()=>clickDeleteRows(codigo)}></div>
     </HeaderApuesta>
     <BodyApuesta>

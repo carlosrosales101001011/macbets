@@ -37,6 +37,8 @@ export const Bet = ({
   codeBet,
   isDisabled,
   inCupon,
+  titulo,
+  subTitulo
 }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(min-width: 650px)" }); //yellow
   const dispatch = useDispatch();
@@ -50,6 +52,8 @@ export const Bet = ({
     codeBet: codeBet,
     comienza: `${date} ${time}`,
     n_bet: `${idAccordion}. ${numbet}`,
+    titulo,
+    subTitulo,
     inCupon: true,
   };
   const [bet, setBet] = useState(event);
@@ -83,7 +87,7 @@ export const Bet = ({
         <ReactTooltip effect="solid" />
         <div className="stateUnBet">
           <p>
-            {stateunBet} : {codeBet}
+            {stateunBet}
           </p>
         </div>
         <div className="multipliedBet">

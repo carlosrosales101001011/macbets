@@ -11,6 +11,8 @@ export const NewArray = (Row)=>{
           codigo: e.codigo,
           comienza: e.comienza,
           n_bet: e.n_bet,
+          titulo: e.titulo, 
+          subTitulo: e.subTitulo,
           bets: Row
             .filter((item) => item.codigo === e.codigo)
             .map(({codigo, comienza, n_bet, idAccordion, statement, accordionStatement, multiplicador, codeBet}) => {return {idAccordion, statement, accordionStatement, multiplicador, codeBet}}),

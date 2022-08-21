@@ -12,7 +12,7 @@ export const Accordion = ({faq, index, toggleFAQ}) => {
             <div className="faq-question"
             onClick={() => toggleFAQ(index)}
             >
-                {faq.id}. {faq.question}
+                {faq.question}
             </div>
             <ContentAccordion className="faq-answer">
                 {faq.answer}
