@@ -4,7 +4,6 @@ import ReactTooltip from 'react-tooltip';
 import styled from 'styled-components'
 
 export const ContentApuesta = ({itema, codigo, bets, clickDeleteRows, clickDeleteRow}) => {
-    console.log(codigo);
   return (
     <ContainerApuesta>
     <HeaderApuesta data-tip={codigo}>

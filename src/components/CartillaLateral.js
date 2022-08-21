@@ -12,62 +12,42 @@ import { Range } from './makeRangeforCartilla/Range';
 import { ContentApuesta } from './ContentApuesta';
 import { EmptyHtml } from './EmptyHtml';
 import Select from 'react-select';
+import { removeRowsInRedux, removerRowInRedux } from '../helpers/metodosReduxAddRemove';
 
 
 export const CartillaLateral = () => {
   const [cuponOpen, setcuponOpen] = useState(false);
-
   const { Row, maxRow, maxRowBool, rowLength } = useSelector((state) => state.showBet);
   const [bets, setbets] = useState(false);
-  // const { showBet} = useSelector((state) => state);
-
   const dispatch= useDispatch();
-
   const ClickReset=()=> dispatch(ResetCartilla());
-  // console.log(cuponOpen);
   const Clickcupon = ()=>{
     setcuponOpen(!cuponOpen);
   }
-
-  //TODO: PARA JUNTAR LAS APUESTAS DEPENDIENDO DEL CODIGO
-  
-  //TODO: FIN -------------------------------------------------------------
   const clickDeleteRow =(index)=>{
-      dispatch(EventStartRemoveBetInCartilla(index));
-      dispatch(EventUpdateProductMultiplieds())
-      dispatch(UpdateEarningsMACS())
-      // dispatch(EventUpdateRemoveOneMultiplieds())
-      ToastsStore.error("Eliminaste una Apuesta de tu cupon", 3700)
-      if(Row.length === 1){
-          dispatch(ResetCartilla());
-        } 
-      }
-  const clickDeleteRows = (codigo)=>{
-    const RowRemoved = Row.filter(r=>r.codigo===codigo).length
-    ToastsStore.error("Eliminaste "+ RowRemoved + " apuesta de tu cupon", 3700)
-    dispatch(DeleteRows(codigo));
+      removerRowInRedux(index, dispatch, Row)
+      // dispatch(EventStartRemoveBetInCartilla(index));
+      // dispatch(EventUpdateProductMultiplieds())
+      // dispatch(UpdateEarningsMACS())
+      // // dispatch(EventUpdateRemoveOneMultiplieds())
+      // ToastsStore.error("Eliminaste una Apuesta de tu cupon", 3700)
+      // if(Row.length === 1){
+      //     dispatch(ResetCartilla());
+      //   } 
   }
-  
+  const clickDeleteRows = (codigo)=>{
+    removeRowsInRedux(dispatch, Row, codigo)
+    // const RowRemoved = Row.filter(r=>r.codigo===codigo).length
+    // ToastsStore.error("Eliminaste "+ RowRemoved + " apuesta de tu cupon", 3700)
+    // dispatch(DeleteRows(codigo));
+  }
   const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
+    { value: 'simple', label: 'Simple' },
+    { value: 'combinada', label: 'Combinada' },
+    { value: 'sistema', label: 'Sistema' },
   ];
-  // const state = {
-  //   selectedOption: null,
-  // };
-  // const handleChange = (selectedOption) => {
-  //   this.setState({ selectedOption }, () =>
-  //     console.log(`Option selected:`, state.selectedOption)
-  //   );
-  // };
-  // const { selectedOption } = state;
   const [selectedOption, setselectedOption] = useState(null);
-
   const styleSumaArr = ["4 rem", "35 rem", "15 rem"];
-  // console.log(styleSumaArr.map(e=> e.replace(' ', '')));
-  // console.log(Row);
-  // console.log(styleSumaArr[0].split(' ')[1]);
   const reducer = (accumulator, curr) => accumulator + curr;
   const styleRepCupon={padding: '5px', backgroundColor: '#DFDFDF'}
   return (
@@ -79,7 +59,7 @@ export const CartillaLateral = () => {
           <div className='angle-down'></div>
         </ContainerHeader>
         <ContainerType style={{...{height: styleSumaArr[0].replace(' ', '')}, ...styleRepCupon}}>
-          <span className='containerSelect'>
+          {/* <span className='containerSelect'>
             <Select 
               className='optionSelect'
               isClearable={false}
@@ -89,22 +69,23 @@ export const CartillaLateral = () => {
               onChange={setselectedOption} 
               options={options}
               />
-          </span>
+          </span> */}
           <span onClick={ClickReset} className="btnVaciarCupon">Vaciar cupon</span>
         </ContainerType>
         <ContainerBody style={{...{height: styleSumaArr[1].replace(' ', '')}, ...styleRepCupon}}>
               {
               Row.length?
-              NewArray(Row).map((itema, index)=>(
-                <ContentApuesta
+              NewArray(Row).map((itema, index)=>{
+                //console.log(itema.bets);
+                return (<ContentApuesta
                               key={index} 
                               itema={itema}
                               codigo={itema.codigo} 
                               bets={itema.bets} 
                               clickDeleteRow={clickDeleteRow} 
                               clickDeleteRows={clickDeleteRows}
-                              />
-                ))
+                              />)
+              })
               : <EmptyHtml msg={"No hay apuesta seleccionada"} fontSize={"20px"}/>
               }
         </ContainerBody>
@@ -160,7 +141,6 @@ const ContainerType = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: red !important;
   .btnVaciarCupon{
     font-weight: bold;
     cursor: pointer;

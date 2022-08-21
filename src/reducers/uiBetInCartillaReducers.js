@@ -17,6 +17,7 @@ const initialState = {
 export const uiBetInCartilla = (state = initialState, action) => {
     switch (action.type) {
         case types.uiAddBetInCartilla:
+            //console.log(state);
             return {
                 ...state,
                 rowLength: state.Row.length + 1,

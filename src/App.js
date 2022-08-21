@@ -13,7 +13,8 @@ export const App = () => {
   const [stateModal, setStateModal] = useState(true);
   return (
 	  <>
-      <NavBar />
+      {/* <NavBar /> */}
+      <TabBar/>
       <ContainerBody>
         <SectionFiltros/>
         <MACBetsBody/>

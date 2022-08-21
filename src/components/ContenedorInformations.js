@@ -23,7 +23,7 @@ const InfQ = styled.span`
     font-size: 77%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-decoration: underline;
-    background-color: red;
+    background-color: yellow;
 `
 const InfA = styled.span`
     font-size: 80%;
