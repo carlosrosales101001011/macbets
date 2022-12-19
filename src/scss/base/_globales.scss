@@ -8,7 +8,29 @@ html {
 //   box-sizing: border-box;
     box-sizing: inherit;
 }
+    //*Generate scrollbars
+    /* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #ababab #ffffff;
+  }
 
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 13px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #ababab;
+    border-radius: 15px;
+    border: 3px solid #ffffff;
+  }
+  //*********************************
 body {
     font-family: $fuentePrincipal;
     font-size: 1.6rem;
@@ -16,7 +38,7 @@ body {
     &.fijar-body {
         overflow: hidden;
     }
-
+    overflow: overlay;
 }
 
 table{

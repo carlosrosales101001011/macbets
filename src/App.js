@@ -7,14 +7,12 @@ import { ModalWTransition } from './components/makeModalWTransition/ModalWTransi
 import { CartillaLateral } from './components/CartillaLateral';
 import styled from 'styled-components';
 import { SectionFiltros } from './components/SectionFiltros';
-import { TabBar } from './components/makeNavBar/TabBar';
 
 export const App = () => {
   const [stateModal, setStateModal] = useState(true);
   return (
 	  <>
-      {/* <NavBar /> */}
-      <TabBar/>
+      <NavBar />
       <ContainerBody>
         <SectionFiltros/>
         <MACBetsBody/>
@@ -27,6 +25,6 @@ export const App = () => {
 }
 const ContainerBody= styled.div`
   display: grid;
-  grid-template-columns: 30% 70%;
-  margin: 5px;
+  grid-template-columns: 25% 70%;
+  margin: 1px;
 `

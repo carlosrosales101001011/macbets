@@ -6,6 +6,7 @@ import { ListNotifications } from './ListNotifications'
 import { ModeNocturno } from './ModeNocturno'
 import { useDispatch } from "react-redux";
 import { uiCloseMenu, uiOpenMenu } from "../../action/ui";
+import { SvgIcons, Walletsvg } from '../svgsJS/SvgIcons'
 
 export const NavBar = () => {
     // const isDesktopOrLaptop=true, isBigScreen=true, isTabletOrMobile=true, isPortrait=true, isRetina=true;
@@ -19,7 +20,7 @@ export const NavBar = () => {
 
 
     const isBigTablet = useMediaQuery({ query: '(min-width: 1024px)' })//blue
-    
+    const colorOfNavBar = "white"
     
         const OpenMenu=()=>dispatch(uiOpenMenu())
         const CloseMenu = ()=> dispatch(uiCloseMenu())
@@ -29,21 +30,21 @@ export const NavBar = () => {
         {
             id: 1,
             name: 'Mis cartillas',
-            icon: (isMobileLands) && <div onClick={()=> setState(true)} className='ElementBarr_right_options_option_text'><p>Mis cartillas</p></div>,
+            icon: (isMobileLands) && <div onClick={()=> setState(true)} className='ElementBarr_right_options_option_text'><p style={{color: colorOfNavBar}}>Mis cartillas</p></div>,
             containerDropdown: (isDesktop || isDesktopMax) && <p>Mis cartillas</p>,
             containerResponsive: ( !isDesktop && !isDesktopMax) && 'Mis-Cartillas modal',
         },
         {
             id: 2,
             name: 'Mi wallet (Tienes 70 en saldo)',
-            icon: (isMobileLands) && <div className='ElementBarr_right_options_option_icon icon-wallet icon_desktop'></div>,
+            icon: (isMobileLands) && <SvgIcons wallet={true} stroke={colorOfNavBar} width={25}/>,
             containerDropdown: (isDesktop || isDesktopMax) && <p>Mi wallet</p>,
             containerResponsive: ( !isDesktop && !isDesktopMax) && 'Wallet modal',
         },
         {
             id: 3,
             name: 'Mis notificaciones',
-            icon: (isMobileLands) && <div className='ElementBarr_right_options_option_icon icon-bell icon_desktop'></div>,
+            icon: (isMobileLands) && <SvgIcons bell={true} stroke={colorOfNavBar} width={25}/>,
             containerDropdown: (isDesktop || isDesktopMax) && <p>Mis notificaciones</p>,
             containerResponsive: ( !isDesktop && !isDesktopMax) && 'Notificaciones modal',
         },
@@ -57,7 +58,7 @@ export const NavBar = () => {
                     </div>
                     {(isMobileLands )&&
                     <div className='ElementBarr_right_options_option_text nameAvatar'>
-                        <p>Carlos</p>
+                        <p style={{color: colorOfNavBar}}>Carlos</p>
                     </div>  
                     }
                 </span>,
@@ -79,7 +80,7 @@ export const NavBar = () => {
     <>
         <div className='component-navBar'>
             <div className={`ElementBarr_left`}>
-                <div className='ElementBarr_left_logo'><p>MACBets</p></div>
+                <div className='ElementBarr_left_logo'><p style={{color: colorOfNavBar}}>MACBets</p></div>
             </div>
             <div className='ElementBarr_right'>
                 <div className='ElementBarr_right_options'>

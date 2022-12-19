@@ -213,7 +213,7 @@ const ContainerHeader = styled.div`
   justify-content: center;
   align-items: center;
   padding: 0 7px;
-  p{
+    
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 80%;

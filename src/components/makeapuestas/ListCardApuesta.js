@@ -104,7 +104,7 @@ const BetMac = styled.div`
   // box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
   border: 1px solid #bdbdbd;
   border-radius: 2px;
-  margin: 1.5rem;
+  margin: 1.5rem 5rem 0 10rem;
   padding: .5rem;
   // grid-template-columns: ${props=> props.isTabletOrMobile ? '40%': '40% 50% 10%'};
   background-color: #fafafa;

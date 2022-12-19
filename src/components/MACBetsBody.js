@@ -108,6 +108,34 @@ export const MACBetsBody = () => {
                 .addAccordionName("mAaQizZ", 'Apuesta sin empate', [
                                             {code: 'FVwCEFBK', inCupon: false, statement: 'Sporting cristal', multiplied: 1.4}, 
                                             {code: 'PYMycQvU', inCupon: false, statement: 'Universitario', multiplied: 3.2}], {inCuponAccordion: false}),
+      bet6: new ModeloApuesta('21/09/2023', '12:00:00', 'champions', 'Sporting cristal vs Universitario', null, 'POLI90')
+                .addAccordionName("NUZxVOO", 'General', [
+                                            {code: 'wXvRuaeb', inCupon: false, statement: 'Sporting cristal', multiplied: 1.4}, 
+                                            {code: 'chdXKQfg', inCupon: false, statement: 'Universitarios', multiplied: 2.3}], {inCuponAccordion: false})
+                .addAccordionName("OKQScVz", 'Nro de goles/1er Tiempo', [
+                                            {code: 'jizdCImi', inCupon: false, statement: 'mas de 1.5', multiplied: 1.4}, 
+                                            {code: 'BNeuUkoK', inCupon: false, statement: 'menos de 1.5', multiplied: 3.2}], {inCuponAccordion: false})
+                .addAccordionName("bgLETBg", 'Doble Oportunidad', [
+                                            {code: 'pfBOYaTg', inCupon: false, statement: 'Sporting cristal o Empate', multiplied: 1.4}, 
+                                            {code: 'ZhgRJGMT', inCupon: false, statement: 'Universitario o Sporting cristal', multiplied: 2.3}, 
+                                            {code: 'tJIfcQyQ', inCupon: false, statement: 'Universitario o Empate', multiplied: 2.3}], {inCuponAccordion: false})
+                .addAccordionName("mAaQizZ", 'Apuesta sin empate', [
+                                            {code: 'FVwCEFBK', inCupon: false, statement: 'Sporting cristal', multiplied: 1.4}, 
+                                            {code: 'PYMycQvU', inCupon: false, statement: 'Universitario', multiplied: 3.2}], {inCuponAccordion: false}),
+      bet7: new ModeloApuesta('21/09/2023', '12:00:00', 'champions', 'Sporting cristal vs Universitario', null, 'POLI90')
+                .addAccordionName("NUZxVOO", 'General', [
+                                            {code: 'wXvRuaeb', inCupon: false, statement: 'Sporting cristal', multiplied: 1.4}, 
+                                            {code: 'chdXKQfg', inCupon: false, statement: 'Universitarios', multiplied: 2.3}], {inCuponAccordion: false})
+                .addAccordionName("OKQScVz", 'Nro de goles/1er Tiempo', [
+                                            {code: 'jizdCImi', inCupon: false, statement: 'mas de 1.5', multiplied: 1.4}, 
+                                            {code: 'BNeuUkoK', inCupon: false, statement: 'menos de 1.5', multiplied: 3.2}], {inCuponAccordion: false})
+                .addAccordionName("bgLETBg", 'Doble Oportunidad', [
+                                            {code: 'pfBOYaTg', inCupon: false, statement: 'Sporting cristal o Empate', multiplied: 1.4}, 
+                                            {code: 'ZhgRJGMT', inCupon: false, statement: 'Universitario o Sporting cristal', multiplied: 2.3}, 
+                                            {code: 'tJIfcQyQ', inCupon: false, statement: 'Universitario o Empate', multiplied: 2.3}], {inCuponAccordion: false})
+                .addAccordionName("mAaQizZ", 'Apuesta sin empate', [
+                                            {code: 'FVwCEFBK', inCupon: false, statement: 'Sporting cristal', multiplied: 1.4}, 
+                                            {code: 'PYMycQvU', inCupon: false, statement: 'Universitario', multiplied: 3.2}], {inCuponAccordion: false}),
       }
   return (
     <>
