@@ -1,0 +1,208 @@
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    margin: 0;
+    padding: 0;
+//   box-sizing: border-box;
+    box-sizing: inherit;
+}
+    //*Generate scrollbars
+    /* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #ababab #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 13px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #ababab;
+    border-radius: 15px;
+    border: 3px solid #ffffff;
+  }
+  //*********************************
+body {
+    font-family: $fuentePrincipal;
+    font-size: 1.6rem;
+    margin: 0;
+    &.fijar-body {
+        overflow: hidden;
+    }
+    overflow: overlay;
+}
+
+table{
+    border-spacing: 2px;
+    border-collapse: collapse;
+    text-indent: initial;
+}
+p {
+    font-size: 2rem;
+    color: $negro;
+}
+.contenedor {
+    max-width: 120rem;
+    width: 95%;
+    margin: 0 auto;
+}
+a {
+    text-decoration: none;
+}
+img {
+    max-width: 100%;
+}
+h1, h2, h3 {
+    margin: 0;
+}
+h1 {
+    font-size: 4rem;
+}
+h2 {
+    font-size: 3.6rem;
+}
+
+h3 {
+    font-size: 3rem;
+}
+
+._center2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+._alignICenter{
+    align-items: center;
+}
+._justifyCenter{
+    display: flex;
+    justify-content: center;
+}
+.LineBottom{
+    margin-bottom: 1rem;
+    border-bottom: 1px solid $disabledColor;
+}
+.LineTop{
+    border-top: 1px solid $disabledColor;
+}
+.paddingBottom{
+    padding-bottom: .7rem;
+}
+.LineBottomTop{
+    border-top: 1px solid $disabledColor;
+    border-bottom: 1px solid $disabledColor;
+}
+.icon-bell{
+    background-image: url('../../svgs/bell.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.icon-user{
+    background-image: url('../../svgs/user.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.icon-wallet{
+    background-image: url('../../svgs/wallet.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.angle-down{
+	background-image: url('../../svgs/arrow-down.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.icon-config{
+    background-image: url('../../svgs/config.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.icon-headPhone{
+    background-image: url('../../svgs/headPhone.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.icon-help{
+    background-image: url('../../svgs/help.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.icon-house{
+    background-image: url('../../svgs/house.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.icon-languages{
+    background-image: url('../../svgs/languages.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.icon-misCartillas{
+    background-image: url('../../svgs/misCartillas.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.icon-moon{
+    background-image: url('../../svgs/moon.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.icon-sun{
+    background-image: url('../../svgs/sun.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.icon-exit{
+    background-image: url('../../svgs/exit.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.icon-deposit{
+    background-image: url('../../svgs/deposit.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.icon-retirar{
+    background-image: url('../../svgs/retirar.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.icon-historial{
+    background-image: url('../../svgs/history.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.icon-cross{
+    background-image: url('../../svgs/cross.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+// body{
+//     overflow-y: hidden;
+// }

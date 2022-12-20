@@ -1,0 +1,39 @@
+.container_btnMenu{
+    // background-color: #fafafa;
+    @include telefono{
+    text-align: -webkit-center;
+    background-color:white;
+    width: 100%;
+    height: 60%;
+    position: fixed;
+    bottom: 0;
+    padding: 0 !important;
+    border-radius: 12px 12px 0px 0px;
+    -moz-border-radius: 12px 12px 0px 0px;
+    -webkit-border-radius: 12px 12px 0px 0px;
+    border: 1px solid #646464;
+        width: 100%;
+        animation: showBTNMenu 1s ease-in-out;
+    }
+}
+// .icon-tabler-arrow-down-circle{
+//     width: 5rem;
+//     height: 2rem;
+//     border-radius: 1rem;
+//     border: 1px solid rgb(139, 139, 139);
+//     background-color:rgb(196, 196, 196);
+//     position: relative;
+//     bottom: 1.4rem;}
+@keyframes showBTNMenu{
+    0%{
+        // width: 0;
+        // height: 0;
+        // opacity: 0;
+        transform: translateY(100%);
+    }
+    100%{
+        // width: 27rem;
+        // opacity: 1;
+        transform: translateY(40);
+    }
+}

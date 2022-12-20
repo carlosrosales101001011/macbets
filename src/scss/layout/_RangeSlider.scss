@@ -1,0 +1,19 @@
+.footerCartilla{
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
+    .btn_Monto{
+        background-color: #48ff00;
+        cursor: pointer;
+        margin: 2px;
+        padding: 5px;
+        font-weight: bold;
+        border-radius: 5px;
+        border: none;
+        font-family: 'Roboto', sans-serif;
+    }
+    .btn_Monto:hover{
+        background-color: #009207;
+        color: white;
+    }
+}
