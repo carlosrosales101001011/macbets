@@ -1,0 +1,59 @@
+.bg-verde {
+    background-color: $verde;
+}
+.bg-yellow {
+    background-color: $amarillo;
+}
+.borderBYT{
+    padding-bottom: 1rem;
+    margin-top: 1rem;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+}
+.margin-top{
+    margin-top: .7rem;
+}
+.utilityContent{
+    padding: 0 0 .5rem 0;
+    p{
+        cursor: pointer;
+        text-align: center;
+        font-size: 1.6rem;
+        color: rgb(148, 148, 148);
+    }
+}
+.content_Emty{
+    justify-content: center;
+    p{
+        text-align: center;
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: #ccc;
+        padding: 5rem 0 3rem 0;
+        &:hover{
+            cursor: default;
+        }
+    }
+}
+.container_list-menu---tel{
+    display: none !important;
+    @include tablet{
+        display: block !important;
+        width: auto !important;
+        height: auto !important;    
+    }
+}
+// .visibleSOLODesktop{
+//     @include desktop{
+//         display: block !important;
+//         }
+//     @include tablet{
+//         display: none !important;
+//         }
+//     }
+.margin{
+    margin: 10rem;
+}
+.bg-white{
+    background-color: $blanco;
+}

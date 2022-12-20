@@ -1,0 +1,35 @@
+
+
+.content_notification{
+    padding: .6rem 2rem 0;
+}
+.notification-Row_content{
+    display: flex;
+    flex-direction: column;
+
+    span{
+        display: flex;
+        flex-direction: row;
+    }
+}
+.notification-Row_title{
+    
+}
+.notification-Row{
+    display: grid;
+    grid-template-columns: 4fr 4fr 1fr;
+    grid-gap: 1rem;
+    p{
+        font-size:1.5rem;
+    }
+}
+.stateWin{
+    font-weight: bold;
+    color: $verdeActivo;
+}
+.stateLost{
+    font-weight: bold;
+    color: $redDesactivado;
+}
+.visualizeCartilla{
+}
