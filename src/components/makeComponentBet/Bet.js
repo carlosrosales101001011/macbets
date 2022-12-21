@@ -149,7 +149,7 @@ const ContainerBet = styled.div`
   }
   &:hover {
     border: none;
-    background-color: purple;
+    background-color: ${props=> props.betSelect? "green":"purple"};
     .multipliedBet {
     }
   }

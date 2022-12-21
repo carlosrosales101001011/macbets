@@ -25,6 +25,6 @@ export const App = () => {
 }
 const ContainerBody= styled.div`
   display: grid;
-  grid-template-columns: 25% 70%;
+  grid-template-columns: 20% 50%;
   margin: 1px;
 `

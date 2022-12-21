@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { CloseModal } from '../action/BetInCartilla';
 
-export const Modal = ({classNameforBackgrounds, modalForCartilla, children, state, ChangeState, titulo='Alerta', background, showHeader, showOverlay, positionModal, padding, positionbtnclose, putWidth}) => {
+export const Modal = ({AdicionalStyle, classNameforBackgrounds, modalForCartilla, children, state, ChangeState, titulo='Alerta', background, showHeader, showOverlay, positionModal, padding, positionbtnclose, putWidth}) => {
     const modalref = useRef(null);
 
     const dispatch = useDispatch();
@@ -17,7 +17,7 @@ export const Modal = ({classNameforBackgrounds, modalForCartilla, children, stat
     return (
       <>    
         {state &&
-        <Overlay className={'modal-overlay'} showOverlay={showOverlay} positionModal={positionModal} ref={modalref} onClick={handleClick}>
+        <Overlay className={'modal-overlay'} AdicionalStyle={AdicionalStyle} showOverlay={showOverlay} positionModal={positionModal} ref={modalref} onClick={handleClick}>
             <ContenedorModal padding={padding} positionbtnclose={positionbtnclose} putWith={putWidth} className={classNameforBackgrounds? classNameforBackgrounds : 'bg-white'}>
                 {showHeader &&
                 <EncabezadoModal>
@@ -48,7 +48,9 @@ top: 0;
 left: 0;
 background: ${props=>props.showOverlay ? 'rgba(0, 0, 0, .5)' : 'rgba(0, 0, 0)'} ;
 overflow-y: auto;
-
+${
+    props=>props.AdicionalStyle&& props.AdicionalStyle
+}
 padding: 40px;
 
 display: flex;

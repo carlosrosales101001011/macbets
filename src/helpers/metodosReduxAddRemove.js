@@ -22,7 +22,10 @@ export const AddinRedux = (dispatch, Row, multiplied, event) => {
     
     ToastsStore.success("Agregaste una apuesta a tu cupon", 3610)
   };
+export const AddinReduxFiltros =(dispatch, objs)=>{
+  console.log(objs);
 
+}
 
 export const removerRowInRedux =(index, dispatch, Row)=>{
   dispatch(EventStartRemoveBetInCartilla(index));

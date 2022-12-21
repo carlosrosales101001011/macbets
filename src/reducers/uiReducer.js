@@ -3,7 +3,9 @@ import { types } from "../types/type";
 const initialState = {
     DropdownOpen: false,
     openCartilla: false,
-    isOpenMenu: false
+    isOpenMenu: false,
+
+    isCheckbox: false
 }
 
 
@@ -40,6 +42,15 @@ export const uiReducer = ( state = initialState, action ) => {
             return {
                 ...state,
                 isOpenMenu: false
+            }
+        case types.uiCheckboxIsSelect:
+            return {
+                ...state,
+                isCheckbox: true
+            }
+        case types.uiCheckboxNotSelect:
+            return {
+                isCheckbox: false
             }
         default:
             return state;
