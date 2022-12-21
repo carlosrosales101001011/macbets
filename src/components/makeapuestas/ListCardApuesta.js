@@ -72,6 +72,7 @@ export const ListCardApuesta = ({keyId, acordiones, bets, titulo, subtitulo, fec
         <p onClick={() => setstateModal1(!stateModal1)}>Ver mas ({cantidaDeBets.reduce(reducer)})</p>
       </div>
       <Modal
+        AdicionalStyle={'flex-direction: row !important; justify-content: flex-end !important; padding-top: 80px !important;'}
         classNameforBackgrounds='modal-apuestas'
         state={stateModal1}
         ChangeState={setstateModal1}
@@ -79,7 +80,7 @@ export const ListCardApuesta = ({keyId, acordiones, bets, titulo, subtitulo, fec
         showOverlay={true}
         positionModal="start"
         padding="15px"
-        putWidth={'100%'}
+        putWidth={'70%'}
         // background={''}
       >
           <div className={"headboardContainerModalTitle"}>

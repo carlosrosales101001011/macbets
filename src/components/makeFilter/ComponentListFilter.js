@@ -1,14 +1,21 @@
 import React from 'react'
 import { useRef } from 'react';
+import { useEffect } from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 import { SvgIcons } from '../svgsJS/SvgIcons';
 import { ComponentFiltersFilter } from './ComponentFiltersFilter';
 
 export const ComponentListFilter = ({NameFilter, subFilters}) => {
-  const refAngleDown = useRef(null);
-  const refSubList=useRef(null);
   const [AngleDown, setAngleDown] = useState(false);
+  
+  const [CheckBoxFiltros, setCheckBoxFiltros] = useState([]);
+  
+  useEffect(() => {
+    setCheckBoxFiltros(subFilters);
+}, [NameFilter, subFilters]);
+
+
   const ClickAngleDown = ()=>{
     setAngleDown(!AngleDown)
   };
@@ -24,8 +31,8 @@ export const ComponentListFilter = ({NameFilter, subFilters}) => {
 
       <div  className='SubList'>
         {
-          subFilters.map((props)=>{
-            return <ComponentFiltersFilter nameFilter={props.name} urlFilter={props.url} key={props.i}/>
+          CheckBoxFiltros.map((props)=>{
+            return <ComponentFiltersFilter AngleMayor={AngleDown} nameFilter={props.name} urlFilter={props.url} key={props.i} isSecundaryFilter={props.SecundaryFilter} bool={props.bool}/>
           })
 
         }
@@ -39,7 +46,18 @@ export const ComponentListFilter = ({NameFilter, subFilters}) => {
 const UlFilter = styled.ul`
   width: 100%;
   margin: 2px auto;
-  
+  .item_list{
+    border-radius: 5px;
+    // background-color: #4c4747;
+    background-color: none;
+    transition: all .45s;
+    ${ props=> props.AngleDownp && `background-color: #4c4747; transition: all .45s;`}
+    p{
+      color: black;
+      transition: all .45s;
+      ${ props=> props.AngleDownp && `color: white; transition: all .45s;`}
+    }
+  }
   .ArrowSlide{
     transform: rotate(180deg);
     transition: all .6s;
@@ -48,16 +66,16 @@ const UlFilter = styled.ul`
     ${ props=> props.AngleDownp && `transform: rotate(0); transition: all .45s;`}
   }
   .item_list  .ListItem{
-    background-color:${ props=> props.AngleDownp ? '#37474F' : `rgb(188, 188, 188)`};
+    background-color:${ props=> props.AngleDownp ? '#4c4747' : `rgb(188, 188, 188)`};
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     cursor: pointer;
-    padding: 4px 8px;
+    padding: 12px 8px;
     align-items: center;
     border-radius: 5px;
     &:hover{
-      background-color: ${ props=> props.AngleDownp ? '#37474F' : `rgb(169 166 166)`};
+      background-color: ${ props=> props.AngleDownp ? '#4c4747' : `rgb(169 166 166)`};
       transition: all .5s;
     }
   p{
@@ -68,11 +86,6 @@ const UlFilter = styled.ul`
 }
 .SubList{
   position: static;
-  border-left: 1px solid #949494;
-  border-right: 1px solid #949494;
-  border-bottom: 1px solid #949494;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
   padding: 0 8px;
 	max-height: 0vh;
   width: 100%;

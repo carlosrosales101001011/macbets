@@ -1,28 +1,89 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { useRef } from 'react';
 import styled from 'styled-components';
+import { useChecked } from '../../hook/useChecked';
 import { SvgIcons } from '../svgsJS/SvgIcons';
 import { SearchFilter } from './SearchFilter';
+import { SecundaryFilter } from './SecundaryFilter';
 
-export const ComponentFiltersFilter = ({nameFilter, urlFilter, width, size}) => {
-    const refChekbox = useRef(false)
-    const [CheckBox, setCheckBox] = useState(false)
-    const hadleCheckBox = ()=>{
-        setCheckBox(!CheckBox)
+export const ComponentFiltersFilter = ({AngleMayor, nameFilter, urlFilter, width, size, isSecundaryFilter, bool}) => {
+    // console.log(isSecundaryFilter);
+    const [ClickAngle, setClickAngle] = useState(false)
+    const inputRef = useRef(null)
+
+    const [CheckBoxFiltros, setCheckBoxFiltros] = useState([]);
+
+
+    // console.log(CheckBoxFiltros &&(CheckBoxFiltros.length>1?CheckBoxFiltros: null));
+    function handleAngle(e) {
+        if (e.target.localName === 'input') {
+            
+            return;
+        }
+        return setClickAngle(!ClickAngle);
     }
-  return (
+    useEffect(() => {
+        setCheckBoxFiltros(isSecundaryFilter);
+    }, [isSecundaryFilter]);
+    // console.log(CheckBoxFiltros.some((user) => user?.isChecked !== true));
+
+    const handleCheckbox = (e)=>{
+        const { name, checked } = e.target;
+        // console.log(name, checked);
+        if (name === `AllSelect`) {
+            // console.log(name);
+            let tempUser = CheckBoxFiltros.map((user) => {
+                
+                return { ...user, isChecked: checked };
+            });
+            setCheckBoxFiltros(tempUser);
+            // console.log(checked);
+        }
+        else{
+            let tempUser = CheckBoxFiltros.map((user) =>
+            user.name === name ? { ...user, isChecked: checked } : user
+            );
+            setCheckBoxFiltros(tempUser);
+        }
+    }
+    
+    // if(CheckBoxFiltros){
+        //     console.log(CheckBoxFiltros.some((user) => user?.isChecked !== true));
+        // }
+        /**checked={CheckBox} onChange={hadleCheckBox} */
+        // console.log(isSecundaryFilter);
+        // const [checked, handleClickCheckbox] = useChecked({nameFilter, bool})
+        return (
     <>
         
-        <Filters widthp={width} sizep={size} href={urlFilter} onClick={hadleCheckBox}>
+        <Filters ClickAnglep={ClickAngle} widthp={width} sizep={size} href={urlFilter} onClick={(e)=>handleAngle(e)}>
             <p>{nameFilter}</p> 
             <div>
-                    <input type={'checkbox'} checked={CheckBox} onChange={hadleCheckBox} value={nameFilter} /> 
+                    <input name={`AllSelect`} 
+                            type={'checkbox'} 
+                            ref={inputRef} 
+                            // checked={CheckBoxFiltros===false &&(!CheckBoxFiltros.filter((user) => user?.isChecked !== true).length < 1)} 
+                            checked={CheckBoxFiltros.filter((user) => user?.isChecked !== true).length < 1} 
+                            value={nameFilter} 
+                            onChange={handleCheckbox}/>
                 <div className='ArrowSlide'>
-                <SvgIcons arrow width={20} stroke={"Black"}/>
+                <SvgIcons arrow width={20} stroke={AngleMayor?"white":"Black"}/>
                 </div>
             </div>
         </Filters>
+        <SubList ClickAnglep={ClickAngle}>
+            {isSecundaryFilter&&
+                CheckBoxFiltros.map(props=>(<SecundaryFilter 
+                                                key={props.i} 
+                                                FilterName={props.name} 
+                                                FilterUrl={props.url} 
+                                                bools={props.bool} 
+                                                checked={props?.isChecked || false} 
+                                                onChange={handleCheckbox}
+                                                setChecked/>))
+            }
+        </SubList>
     </>
   )
 }
@@ -38,11 +99,29 @@ const Filters = styled.a`
             cursor: pointer;
         }
         .ArrowSlide{
-            transform: rotate(-90deg);
+            transform: rotate(180deg);
+            transition: all .5s;
+        }
+        .ArrowSlide{
+            ${props=> props.ClickAnglep && `transform: rotate(0); transition: all .5s;`}
         }
     }
     p{
-        font-size: ${props=> props.sizep? props.sizep: '12px'};
+        font-size: ${props=> props.sizep? props.sizep: '15px'};
         font-family: 'Mingzat', sans-serif;
+        word-wrap: break-word;
+        // color: white;
     }
+`
+const SubList = styled.div`
+max-height: 0vh;
+width: 100%;
+transition: all .5s;
+overflow: hidden;
+visibility: hidden;
+        ${props=> props.ClickAnglep &&`
+        transition: all .5s;
+        max-height: 100vh;
+        visibility: visible;     
+        `}
 `

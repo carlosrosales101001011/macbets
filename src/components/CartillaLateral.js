@@ -50,7 +50,7 @@ export const CartillaLateral = () => {
   const styleSumaArr = ["4 rem", "35 rem", "15 rem"];
   const reducer = (accumulator, curr) => accumulator + curr;
   const styleRepCupon={padding: '5px', backgroundColor: '#DFDFDF'}
-  console.log(NewArray(Row));
+  // console.log(NewArray(Row));
   return (
     <>
     <ToastsContainer store={ToastsStore} position={ToastsContainerPosition.BOTTOM_LEFT}/>

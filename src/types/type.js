@@ -31,5 +31,8 @@ export const types={
     uiIsCloseMenu: '[ui] Close Menu',
     
     betResaltada: 'bet Resaltada', 
-    DeleteRows: 'Delete Rows'
+    DeleteRows: 'Delete Rows',
+
+    uiCheckboxIsSelect: '[ui] Checkbox Select',
+    uiCheckboxNotSelect: '[ui] Checkbox Not Select',
 }
