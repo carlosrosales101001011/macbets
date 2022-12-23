@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/macbets/static/css/main.fe93b82c.css",
-    "main.js": "/macbets/static/js/main.69d9cf48.js",
+    "main.css": "/macbets/static/css/main.41c1a0e0.css",
+    "main.js": "/macbets/static/js/main.d871ebc9.js",
     "static/media/languages.svg": "/macbets/static/media/languages.5ef68a8ac1df88d06fdd.svg",
     "static/media/config.svg": "/macbets/static/media/config.b100db52080e9d5f4ca2.svg",
     "static/media/bell.svg": "/macbets/static/media/bell.0f4ac95de4ffdb7b7f71.svg",
@@ -20,11 +20,11 @@
     "static/media/arrow-down.svg": "/macbets/static/media/arrow-down.892e2028e8d1cd8ccfb4.svg",
     "static/media/misCartillas.svg": "/macbets/static/media/misCartillas.2fd446bd80cc6bf93e3f.svg",
     "static/media/exit.svg": "/macbets/static/media/exit.34c4d1aa3cf864dda47d.svg",
-    "main.fe93b82c.css.map": "/macbets/static/css/main.fe93b82c.css.map",
-    "main.69d9cf48.js.map": "/macbets/static/js/main.69d9cf48.js.map"
+    "main.41c1a0e0.css.map": "/macbets/static/css/main.41c1a0e0.css.map",
+    "main.d871ebc9.js.map": "/macbets/static/js/main.d871ebc9.js.map"
   },
   "entrypoints": [
-    "static/css/main.fe93b82c.css",
-    "static/js/main.69d9cf48.js"
+    "static/css/main.41c1a0e0.css",
+    "static/js/main.d871ebc9.js"
   ]
 }
