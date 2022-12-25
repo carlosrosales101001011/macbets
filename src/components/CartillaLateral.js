@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import ReactTooltip from 'react-tooltip';
@@ -13,101 +13,129 @@ import { ContentApuesta } from './ContentApuesta';
 import { EmptyHtml } from './EmptyHtml';
 import Select from 'react-select';
 import { removeRowsInRedux, removerRowInRedux } from '../helpers/metodosReduxAddRemove';
+import { SvgIcons } from './svgsJS/SvgIcons';
+import Draggable from 'react-draggable';
 
 
 export const CartillaLateral = () => {
   const [cuponOpen, setcuponOpen] = useState(false);
-  const { Row, maxRow, maxRowBool, rowLength } = useSelector((state) => state.showBet);
-  const [bets, setbets] = useState(false);
+  const { Row, maxRow, maxRowBool } = useSelector((state) => state.showBet);
   const dispatch= useDispatch();
   const ClickReset=()=> dispatch(ResetCartilla());
-  const Clickcupon = ()=>{
+  const Clickcupon = (e)=>{ 
+    if (e.target.nodeName==='STRONG') {return}
+
     setcuponOpen(!cuponOpen);
   }
   const clickDeleteRow =(index)=>{
       removerRowInRedux(index, dispatch, Row)
-      // dispatch(EventStartRemoveBetInCartilla(index));
-      // dispatch(EventUpdateProductMultiplieds())
-      // dispatch(UpdateEarningsMACS())
-      // // dispatch(EventUpdateRemoveOneMultiplieds())
-      // ToastsStore.error("Eliminaste una Apuesta de tu cupon", 3700)
-      // if(Row.length === 1){
-      //     dispatch(ResetCartilla());
-      //   } 
   }
-  const clickDeleteRows = (codigo)=>{
-    removeRowsInRedux(dispatch, Row, codigo)
-    // const RowRemoved = Row.filter(r=>r.codigo===codigo).length
-    // ToastsStore.error("Eliminaste "+ RowRemoved + " apuesta de tu cupon", 3700)
-    // dispatch(DeleteRows(codigo));
+  const clickDeleteRows = (codeBet)=>{
+    removeRowsInRedux(dispatch, Row, codeBet)
   }
   const options = [
     { value: 'simple', label: 'Simple' },
     { value: 'combinada', label: 'Combinada' },
     { value: 'sistema', label: 'Sistema' },
   ];
-  const [selectedOption, setselectedOption] = useState(null);
   const styleSumaArr = ["4 rem", "35 rem", "15 rem"];
   const reducer = (accumulator, curr) => accumulator + curr;
   const styleRepCupon={padding: '5px', backgroundColor: '#DFDFDF'}
-  // console.log(NewArray(Row));
+
+
+
+
+
+
+
+
+
+  
+
+  const [state, setstate] = useState({
+    activeDrags: 0,
+    deltaPosition: {
+      x: 0, y: 0
+    },
+    controlledPosition: {
+      x: -400, y: 200
+    }
+  })
+
+  const onStart = () => {
+    setstate({activeDrags: ++state.activeDrags});
+  };
+  const onStop = () => {
+    setstate({activeDrags: --state.activeDrags});
+  };
+
+
+  const dragHandlers = {onStart: onStart, onStop: onStop};
   return (
     <>
-    <ToastsContainer store={ToastsStore} position={ToastsContainerPosition.BOTTOM_LEFT}/>
-    <CartillaContenedor style={{transform: `translateY(${cuponOpen?'0': styleSumaArr.map(e=> Number(e.split(' ')[0])).reduce(reducer)+styleSumaArr[0].split(' ')[1]})`}}>
-        <ContainerHeader onClick={Clickcupon}>
-          <p>Cupon de apuesta ({Row.length})</p>
-          <div className='angle-down'></div>
-        </ContainerHeader>
-        <ContainerType style={{...{height: styleSumaArr[0].replace(' ', '')}, ...styleRepCupon}}>
-          {/* <span className='containerSelect'>
-            <Select 
-              className='optionSelect'
-              isClearable={false}
-              isDisabled={false}
-              isSearchable={false}
-              defaultValue={options[0]} 
-              onChange={setselectedOption} 
-              options={options}
-              />
-          </span> */}
-          <span onClick={ClickReset} className="btnVaciarCupon">Vaciar cupon</span>
-        </ContainerType>
-        <ContainerBody style={{...{height: styleSumaArr[1].replace(' ', '')}, ...styleRepCupon}}>
-              {
-              Row.length?
-              NewArray(Row).map((itema, index)=>{
-                //console.log(itema.bets);
-                return (<ContentApuesta
-                              key={index} 
-                              itema={itema}
-                              codigo={itema.codigo} 
-                              titulo={itema.titulo}
-                              subTitulo={itema.subTitulo}
-                              bets={itema.bets} 
-                              clickDeleteRow={clickDeleteRow} 
-                              clickDeleteRows={clickDeleteRows}
-                              />)
-              })
-              : <EmptyHtml msg={"No hay apuesta seleccionada"} fontSize={"20px"}/>
-              }
-        </ContainerBody>
-        <ContainerFooter style={{...{height: styleSumaArr[2].replace(' ', '')}, ...styleRepCupon}}>
-                    
-        { maxRowBool && ToastsStore.error(`¡Alto!, el numero de filas maxima es de ${maxRow}`, 3700)}
-        <ContenedorInformations/>
-          <Range btnvalue={10}/>
-          <Range btnvalue={20}/>
-          <Range btnvalue={30}/>
-          <Range btnvalue={40}/>
-          <Range btnvalue={50}/>
-          <Range btnvalue={60}/>
-          <Range btnvalue={70}/>
-          <Range btnvalue={80}/>
-          <Range btnvalue={90}/>
-          <Range btnvalue={100}/>
-        </ContainerFooter>
-    </CartillaContenedor>
+      <CartillaContenedor style={{transform: `translateY(${cuponOpen?'0': styleSumaArr.map(e=> Number(e.split(' ')[0])).reduce(reducer)+styleSumaArr[0].split(' ')[1]})`}}>
+    
+    <Draggable axis="x" handle="strong" bounds={'parent'}  {...dragHandlers}>
+    <span className={'box no-cursor'}>
+          <ContainerHeader onClick={Clickcupon}>
+            <p>Cupon de apuesta ({Row.length})</p>
+            <strong  className="custom-btn cursor">Read More</strong>
+            <SvgIcons arrow stroke={'white'} width={25} />
+          </ContainerHeader>
+          <ContainerType style={{...{height: styleSumaArr[0].replace(' ', '')}, ...styleRepCupon}}>
+            {/* <span className='containerSelect'>
+              <Select 
+                className='optionSelect'
+                isClearable={false}
+                isDisabled={false}
+                isSearchable={false}
+                defaultValue={options[0]} 
+                onChange={setselectedOption} 
+                options={options}
+                />
+            </span> */}
+            <span onClick={ClickReset} className="btnVaciarCupon">Vaciar cupon</span>
+          </ContainerType>
+          
+      <ToastsContainer store={ToastsStore} position={ToastsContainerPosition.BOTTOM_LEFT}/>
+          <ContainerBody style={{...{height: styleSumaArr[1].replace(' ', '')}, ...styleRepCupon}}>
+                {
+                Row.length?
+                NewArray(Row).map((itema, index)=>{
+                  //console.log(itema.bets);
+                  return (<ContentApuesta
+                                key={index} 
+                                itema={itema}
+                                codeBet={itema.codeBet} 
+                                titulo={itema.titulo}
+                                subTitulo={itema.subTitulo}
+                                bets={itema.bets} 
+                                clickDeleteRow={clickDeleteRow} 
+                                clickDeleteRows={clickDeleteRows}
+                                />)
+                })
+                : <EmptyHtml msg={"No hay apuesta seleccionada"} fontSize={"20px"}/>
+                }
+          </ContainerBody>
+          <ContainerFooter style={{...{height: styleSumaArr[2].replace(' ', '')}, ...styleRepCupon}}>
+                      
+          { maxRowBool && ToastsStore.error(`¡Alto!, el numero de filas maxima es de ${maxRow}`, 3700)}
+          <ContenedorInformations/>
+            <Range btnvalue={10}/>
+            <Range btnvalue={20}/>
+            <Range btnvalue={30}/>
+            <Range btnvalue={40}/>
+            <Range btnvalue={50}/>
+            <Range btnvalue={60}/>
+            <Range btnvalue={70}/>
+            <Range btnvalue={80}/>
+            <Range btnvalue={90}/>
+            <Range btnvalue={100}/>
+          </ContainerFooter>
+    </span>
+    
+    </Draggable>
+      </CartillaContenedor>
     </>
   )
 }
@@ -115,9 +143,7 @@ export const CartillaLateral = () => {
 const CartillaContenedor = styled.div`
       position: fixed;
       bottom: 0;
-      right: 0;
       width: 36rem;
-      height: auto;
       margin-right: 3rem;
 `
 const ContainerHeader = styled.div`
@@ -127,8 +153,45 @@ const ContainerHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  
   padding: 1.8rem 1.5rem;
+  
+  .custom-btn {
+    width: 130px;
+    height: 20px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 5px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+     7px 7px 20px 0px rgba(0,0,0,.1),
+     4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+
+    background: rgb(96,9,240);
+    background: linear-gradient(0deg, rgba(96,9,240,1) 0%, rgba(129,5,240,1) 100%);
+    border: none;
+    
+  }
+  .custom-btn:before {
+    height: 0%;
+    width: 2px;
+  }
+  .custom-btn:hover {
+    box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+                -4px -4px 6px 0 rgba(116, 125, 136, .5), 
+      inset -4px -4px 6px 0 rgba(255,255,255,.2),
+      inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
+  }
+  
+  
+
+
   p{
     font-size: 13px;
     color: white;
@@ -254,7 +317,7 @@ const ContainerHeader = styled.div`
         <table id="lista-apuestas">
           <thead>
             <tr>
-              <th>codigo</th>
+              <th>codeBet</th>
               <th>Comienza</th>
               <th>Nº de apuesta</th>
               <th>multiplicador</th>

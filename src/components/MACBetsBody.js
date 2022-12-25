@@ -75,7 +75,7 @@ export const MACBetsBody = () => {
                                             {code: 'oQKDblVb', inCupon: false, statement: 'bbbb', multiplied: 4.1}, 
                                             {code: 'fwopjCCZ', inCupon: false, statement: 'bbbb', multiplied: 4.1}, 
                                             {code: 'VFNBksSv', inCupon: false, statement: 'bbbb', multiplied: 4.1}], {inCuponAccordion: false}),
-      bet4: new ModeloApuesta('21/09/2022', '18:00:00', 'champions', 'Sporting cristal vs Universitario hola', null, 'KILO34')
+      bet4: new ModeloApuesta('21/09/2022', '18:00:00', 'champions', 'Sporting cristal vs Universitario hola', null, '183396')
                 .addAccordionName("DOJgPky", 'Z', [
                                             {code: 'NChcTpkJ', inCupon: false, statement: 'a', multiplied: 1.4}, 
                                             {code: 'dEptDyOd', inCupon: false, statement: 'aa', multiplied: 2.3}, 
@@ -94,7 +94,7 @@ export const MACBetsBody = () => {
                                             {code: 'JMlIIFxI', inCupon: false, statement: 'bbbb', multiplied: 4.1}, 
                                             {code: 'wlslsdAz', inCupon: false, statement: 'bbbb', multiplied: 4.1}, 
                                             {code: 'MlldxSRq', inCupon: false, statement: 'bbbb', multiplied: 4.1}], {inCuponAccordion: false}),
-      bet5: new ModeloApuesta('21/09/2023', '12:00:00', 'champions', 'Sporting cristal vs Universitario', null, 'POLI90')
+      bet5: new ModeloApuesta('21/09/2023', '12:00:00', 'champions', 'Sporting cristal vs Universitario', null, '180325')
                 .addAccordionName("NUZxVOO", 'General', [
                                             {code: 'wXvRuaeb', inCupon: false, statement: 'Sporting cristal', multiplied: 1.4}, 
                                             {code: 'chdXKQfg', inCupon: false, statement: 'Universitarios', multiplied: 2.3}], {inCuponAccordion: false})
@@ -108,7 +108,7 @@ export const MACBetsBody = () => {
                 .addAccordionName("mAaQizZ", 'Apuesta sin empate', [
                                             {code: 'FVwCEFBK', inCupon: false, statement: 'Sporting cristal', multiplied: 1.4}, 
                                             {code: 'PYMycQvU', inCupon: false, statement: 'Universitario', multiplied: 3.2}], {inCuponAccordion: false}),
-      bet6: new ModeloApuesta('21/09/2023', '12:00:00', 'champions', 'Sporting cristal vs Universitario', null, 'POLI90')
+      bet6: new ModeloApuesta('21/09/2023', '12:00:00', 'champions', 'Sporting cristal vs Universitario', null, '628804')
                 .addAccordionName("NUZxVOO", 'General', [
                                             {code: 'wXvRuaeb', inCupon: false, statement: 'Sporting cristal', multiplied: 1.4}, 
                                             {code: 'chdXKQfg', inCupon: false, statement: 'Universitarios', multiplied: 2.3}], {inCuponAccordion: false})
@@ -122,7 +122,7 @@ export const MACBetsBody = () => {
                 .addAccordionName("mAaQizZ", 'Apuesta sin empate', [
                                             {code: 'FVwCEFBK', inCupon: false, statement: 'Sporting cristal', multiplied: 1.4}, 
                                             {code: 'PYMycQvU', inCupon: false, statement: 'Universitario', multiplied: 3.2}], {inCuponAccordion: false}),
-      bet7: new ModeloApuesta('21/09/2023', '12:00:00', 'champions', 'Sporting cristal vs Universitario', null, 'POLI90')
+      bet7: new ModeloApuesta('21/09/2023', '12:00:00', 'champions', 'Sporting cristal vs Universitario', null, '500905')
                 .addAccordionName("NUZxVOO", 'General', [
                                             {code: 'wXvRuaeb', inCupon: false, statement: 'Sporting cristal', multiplied: 1.4}, 
                                             {code: 'chdXKQfg', inCupon: false, statement: 'Universitarios', multiplied: 2.3}], {inCuponAccordion: false})
@@ -149,7 +149,7 @@ export const MACBetsBody = () => {
               subtitulo={aps.subtitulo}
               fecha={aps.fecha}
               hora={aps.hora}
-              codigobet={aps.codigo}
+              codeBetbet={aps.codeBet}
 
           />
         ))
@@ -164,4 +164,8 @@ export const MACBetsBody = () => {
   )
 }
 const BodyMacBets = styled.div`
+position: sticky;
+top: 60px;
+height: 92vh;
+overflow-y: scroll;
 `

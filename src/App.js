@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { MACBetsBody } from './components/MACBetsBody'
 import { NavBar } from './components/makeNavBar/NavBar'
-import ReactTooltip from 'react-tooltip';
-import {PopupAlert} from './components/PopupAlert';
-import { ModalWTransition } from './components/makeModalWTransition/ModalWTransition';
-import { CartillaLateral } from './components/CartillaLateral';
 import styled from 'styled-components';
 import { SectionFiltros } from './components/SectionFiltros';
+import { SectionPublicity } from './components/SectionPublicity';
+import { CartillaDifentedos } from './components/CartillaDifentedos';
+import { ContainerFooter } from './components/ContainerFooter';
 
 export const App = () => {
   const [stateModal, setStateModal] = useState(true);
@@ -16,15 +15,17 @@ export const App = () => {
       <ContainerBody>
         <SectionFiltros/>
         <MACBetsBody/>
-        <CartillaLateral/>
+        <SectionPublicity/>
       </ContainerBody>
+      <ContainerFooter/>
+        <CartillaDifentedos/>
+        {/* <CartillaLateral/> */}
       {/* <TabBar/> */}
       {/* <Cartilla stateModal1={false}/> */}
     </>
   )
 }
 const ContainerBody= styled.div`
-  display: grid;
-  grid-template-columns: 20% 50%;
-  margin: 1px;
+  display: flex;
+  justify-content: center;
 `

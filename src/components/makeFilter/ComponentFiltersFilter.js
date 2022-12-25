@@ -91,7 +91,7 @@ const Filters = styled.a`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: ${props=> props.widthp? props.widthp: '3px 5px'};
+    padding: ${props=> props.widthp? props.widthp: '2px 5px'};
     div{
         display: flex;
         input{

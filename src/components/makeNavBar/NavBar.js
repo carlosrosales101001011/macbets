@@ -7,6 +7,7 @@ import { ModeNocturno } from './ModeNocturno'
 import { useDispatch } from "react-redux";
 import { uiCloseMenu, uiOpenMenu } from "../../action/ui";
 import { SvgIcons, Walletsvg } from '../svgsJS/SvgIcons'
+import styled from 'styled-components'
 
 export const NavBar = () => {
     // const isDesktopOrLaptop=true, isBigScreen=true, isTabletOrMobile=true, isPortrait=true, isRetina=true;
@@ -78,7 +79,7 @@ export const NavBar = () => {
 
   return (
     <>
-        <div className='component-navBar'>
+        <ComponentNavBar className='component-navBar'>
             <div className={`ElementBarr_left`}>
                 <div className='ElementBarr_left_logo'><p style={{color: colorOfNavBar}}>MACBets</p></div>
             </div>
@@ -101,7 +102,10 @@ export const NavBar = () => {
                     }
                 </div>
             </div>
-        </div>
+        </ComponentNavBar>
     </>
   )
 }
+const ComponentNavBar = styled.div`
+
+`

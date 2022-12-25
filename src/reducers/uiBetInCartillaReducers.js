@@ -35,9 +35,9 @@ export const uiBetInCartilla = (state = initialState, action) => {
                 // Row: [ ...state.Row.slice(0, state.Row.length - 1) ],
             }
         case types.uiRemoveBetInCartilla:
-            // console.log(state.Row.find(e=>e.codeBet===action.payload));
+            // console.log(state.Row.find(e=>e.codeBtn===action.payload));
             // state.Row[action.payload];
-            const rowDelete = state.Row.find(e=>e.codeBet===action.payload) 
+            const rowDelete = state.Row.find(e=>e.codeBtn===action.payload) 
             return {
                 ...state,
                 rowLength: state.Row.length - 1,
@@ -103,7 +103,7 @@ export const uiBetInCartilla = (state = initialState, action) => {
                 amount: '0'
             }
         case types.betResaltada:
-            // const btnEnabled = state.Row.find(e=>e.codeBet===action.payload)
+            // const btnEnabled = state.Row.find(e=>e.codeBtn===action.payload)
             const btnEnabled = state
             // btnEnabled.inCupon=true;
             // console.log(action.payload);
@@ -114,12 +114,12 @@ export const uiBetInCartilla = (state = initialState, action) => {
                 // Row: [...state.Row.filter(row => row !== rowDelete)],
             }
         case types.DeleteRows:
-            // const rows = state.Row.filter(r=> r.codigo===action.payload)
+            // const rows = state.Row.filter(r=> r.codeBet===action.payload)
             // console.log(action.payload);
             return{
                 ...state,
                 rowLength: state.Row.length - 1,
-                Row: [...state.Row.filter(row => row.codigo !== action.payload)],
+                Row: [...state.Row.filter(row => row.codeBet !== action.payload)],
             }
         default:
             return state;

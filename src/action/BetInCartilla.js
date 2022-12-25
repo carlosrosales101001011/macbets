@@ -27,6 +27,20 @@ export const EventStartAddNew = (rowlength, maxRow, row)=>{
     }
         }
 
+export const GetInformationSeeMore = (payload, isSelect)=>({
+    type: types.uiobjSeeMore,
+    payload,
+    isSelect,
+})
+export const IsOpenSeeMore = ()=>({
+    type: types.uiIsOpenSeeMore,
+})
+export const IsCloseSeeMore = ()=>({
+    type: types.uiIsCloseSeeMore
+})
+
+
+
 
 export const AddBetInCartilla = (maxRow, row)=>({
     type: types.uiAddBetInCartilla,

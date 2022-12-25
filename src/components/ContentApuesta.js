@@ -3,12 +3,12 @@ import { useSelector } from 'react-redux';
 import ReactTooltip from 'react-tooltip';
 import styled from 'styled-components'
 
-export const ContentApuesta = ({itema, codigo, bets, titulo, subTitulo, clickDeleteRows, clickDeleteRow}) => {
+export const ContentApuesta = ({itema, codeBet, bets, titulo, subTitulo, clickDeleteRows, clickDeleteRow}) => {
   return (
     <ContainerApuesta>
-    <HeaderApuesta data-tip={codigo}>
+    <HeaderApuesta data-tip={codeBet}>
         <span>{titulo}: {subTitulo}</span>
-        <div className='icon-cross' onClick={()=>clickDeleteRows(codigo)}></div>
+        <div className='icon-cross' onClick={()=>clickDeleteRows(codeBet)}></div>
     </HeaderApuesta>
     <BodyApuesta>
         {bets.map((itemb, indexb)=>(
@@ -21,7 +21,7 @@ export const ContentApuesta = ({itema, codigo, bets, titulo, subTitulo, clickDel
             <div className='multipliedCuota'>
             x{itemb.multiplicador}
             </div>
-            <div className='icon-cross' onClick={()=>clickDeleteRow(itemb.codeBet)}></div>
+            <div className='icon-cross' onClick={()=>clickDeleteRow(itemb.codeBtn)}></div>
         </div>
         </div>
         ))}
@@ -111,8 +111,8 @@ const BodyApuesta = styled.div`
 `
 
                 // {/* <HeaderApuesta>
-                // <span>{itema.codigo}</span>
-                // <div className='icon-cross' onClick={()=>clickDeleteRows(itema.codigo)}></div>
+                // <span>{itema.codeBet}</span>
+                // <div className='icon-cross' onClick={()=>clickDeleteRows(itema.codeBet)}></div>
                 // </HeaderApuesta>
                 // <BodyApuesta>
                 //   {itema.bets.map((itemb, indexb)=>(
@@ -125,7 +125,7 @@ const BodyApuesta = styled.div`
                 //       <div className='multipliedCuota'>
                 //         x{itemb.multiplicador}
                 //       </div>
-                //       <div className='icon-cross' onClick={()=>clickDeleteRow(itemb.codeBet)}></div>
+                //       <div className='icon-cross' onClick={()=>clickDeleteRow(itemb.codeBtn)}></div>
                 //     </div>
                 //   </div>
                 //   ))}

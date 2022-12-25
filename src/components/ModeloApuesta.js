@@ -5,9 +5,9 @@ export class ModeloApuesta{
     static IDAccordion = 0;
     static IDBet = 0;
 
-    constructor( fecha, hora, titulo, subtitulo, descripcion, codigo){
+    constructor( fecha, hora, titulo, subtitulo, descripcion, codeBet){
         this.id = ++ModeloApuesta.ID;
-        this._codigo =  codigo;
+        this._codeBet =  codeBet;
         this._fecha = fecha;
         this._hora = hora;
         this._titulo = titulo;
@@ -53,11 +53,11 @@ export class ModeloApuesta{
     set descripcion(descripcion){ 
         this._descripcion = descripcion;
     }
-    get codigo(){
-    return this._codigo;
+    get codeBet(){
+    return this._codeBet;
     }
-    set codigo(codigo){ 
-        this._codigo = codigo;
+    set codeBet(codeBet){ 
+        this._codeBet = codeBet;
     }
     addAccordionName(idAccordion, nameAccordion, bets=null){
         this.accordionBet.push({Index: ++ModeloApuesta.IDAccordion, id: idAccordion, name: nameAccordion, bets});

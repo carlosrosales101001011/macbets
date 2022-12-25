@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const SvgIcons = ({search, arrow, bell, wallet, stroke, width}) => {
+export const SvgIcons = ({closeEquis, caretBlack, className, coupon, search, arrow, bell, wallet, stroke, width}) => {
 
   return (
     <>
@@ -38,6 +38,35 @@ export const SvgIcons = ({search, arrow, bell, wallet, stroke, width}) => {
           //   <path fill="none" stroke="currentColor" strokeLinecap="round" 
           //   strokeMiterlimit="10" strokeWidth="32" d="M283.64 283.64L336 336"/>
           //   </svg>
+        }
+        {coupon &&
+          <svg xmlns="http://www.w3.org/2000/svg" 
+          className={`icon icon-tabler icon-tabler-ticket ${className}`} 
+          width={width} height={width} 
+          viewBox="0 0 24 24" 
+          strokeWidth="1.5" 
+          stroke={stroke} 
+          fill="none" 
+          strokeLinecap="round" 
+          strokeLinejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <line x1="15" y1="6" x2="15" y2="18" />
+            <path d="M5 5h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-3a2 2 0 0 0 0 -4v-3a2 2 0 0 1 2 -2" />
+          </svg>
+        }
+        {caretBlack &&
+          <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-caret-right" 
+          width={width} height={width} viewBox="0 0 24 24" strokeWidth="1.5" 
+          stroke='black' fill={stroke} strokeLinecap="round" strokeLinejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+          <path d="M18 15l-6 -6l-6 6h12" transform="rotate(90 12 12)" />
+        </svg>
+        }
+        {closeEquis &&
+          <svg xmlns="http://www.w3.org/2000/svg" className="ionicon" width={width} viewBox="0 0 512 512">
+            <path fill="none" stroke={stroke} strokeLinecap="round" 
+            strokeLinejoin="round" strokeWidth="32" d="M368 368L144 144M368 144L144 368"/>
+            </svg>
         }
     </>
   )

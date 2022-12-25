@@ -1,11 +1,16 @@
+import { type } from "@testing-library/user-event/dist/type";
 import { types } from "../types/type";
 
 const initialState = {
+    isObjSeeMore: {},
+    isSelectedSeeMore: false,
+
+
+
     DropdownOpen: false,
     openCartilla: false,
-    isOpenMenu: false,
+    // isOpenMenu: false,
 
-    isCheckbox: false
 }
 
 
@@ -51,6 +56,12 @@ export const uiReducer = ( state = initialState, action ) => {
         case types.uiCheckboxNotSelect:
             return {
                 isCheckbox: false
+            }
+        case types.uiobjSeeMore:
+            return{
+                ...state,
+                isObjSeeMore: action.payload,
+                isSelectedSeeMore: action.isSelect
             }
         default:
             return state;

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { EventStartRemoveBetInCartilla, ResetCartilla, EventUpdateProductMultiplieds, EventUpdateRemoveOneMultiplieds, UpdateEarningsMACS } from '../action/BetInCartilla';
 import ReactTooltip from 'react-tooltip';
 
-export const TrsCartilla = ({id, accordionStatement, statement, codigo, comienza, n_bet, multiplicador}) => {
+export const TrsCartilla = ({id, accordionStatement, statement, codeBet, comienza, n_bet, multiplicador}) => {
     const dispatch = useDispatch();
     const { Row, maxRow } = useSelector((state) => state.showBet)
 
@@ -20,7 +20,7 @@ export const TrsCartilla = ({id, accordionStatement, statement, codigo, comienza
   return (
     <>
     <tr>
-        <th >#{codigo}</th>
+        <th >#{codeBet}</th>
         <th >{comienza}</th>
         <th data-tip={accordionStatement + ' - '+ statement} >{n_bet} <ReactTooltip  /></th>	
         <th >x{multiplicador}</th>

@@ -35,13 +35,16 @@ body {
     font-family: $fuentePrincipal;
     font-size: 1.6rem;
     margin: 0;
-    background-color: #f4f4f4;
+    background-color: white;
     &.fijar-body {
         overflow: hidden;
     }
+    
     overflow: overlay;
-}
+    overflow-x: hidden;
+    // overflow-y: hidden;
 
+}
 table{
     border-spacing: 2px;
     border-collapse: collapse;

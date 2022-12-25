@@ -46,7 +46,7 @@ export const Cartilla = ({ bet, stateModal1, setstateModal1 }) => {
         <table id="lista-apuestas">
           <thead>
             <tr>
-              <th>codigo</th>
+              <th>codeBet</th>
               <th>Comienza</th>
               <th>Nº de apuesta</th>
               <th>multiplicador</th>

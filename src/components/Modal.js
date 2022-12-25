@@ -41,6 +41,7 @@ export const Modal = ({AdicionalStyle, classNameforBackgrounds, modalForCartilla
 
 
 const Overlay = styled.div`
+z-index: 12;
 width: 100%;
 height: 100%;
 position: fixed;

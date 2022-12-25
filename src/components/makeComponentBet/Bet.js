@@ -1,21 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {  useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  DeleteLastBet,
-  EventStartAddNew,
-  EventStartRemoveBetInCartilla,
-  EventUpdateProductMultiplieds,
-  OpenModal,
-  ResaltarBet,
-  ResetCartilla,
-  UpdateAmountBetInCartilla,
-  UpdateEarningsMACS,
-  UpdateMaxTimeBetInCartilla,
-} from "../../action/BetInCartilla";
-import { randomDate2 } from "../../helpers/randomNumber";
 import styled from "styled-components";
 import { useMediaQuery } from "react-responsive";
-import sweetAlert from "sweetalert2";
 import ReactTooltip from "react-tooltip";
 import {
   ToastsContainer,
@@ -30,11 +16,11 @@ export const Bet = ({
   multiplied,
   date,
   time,
-  codigo,
+  codeBet,
   idAccordion,
   numbet,
   nameAccordion,
-  codeBet,
+  codeBtn,
   isDisabled,
   inCupon,
   titulo,
@@ -44,28 +30,31 @@ export const Bet = ({
   const dispatch = useDispatch();
   const { Row } = useSelector((state) => state.showBet);
   const event = {
-    codigo: codigo,
-    idAccordion: idAccordion,
+    codeBet,
+    idAccordion,
+    codeBtn,
+
+
+
     accordionStatement: nameAccordion,
     statement: stateunBet,
     multiplicador: multiplied,
-    codeBet: codeBet,
     comienza: `${date} ${time}`,
     n_bet: `${idAccordion}. ${numbet}`,
     titulo,
     subTitulo,
     inCupon: true,
   };
-  const [bet, setBet] = useState(event);
-
+  // console.log(codeBet, ": Codigo de la apuesta, ", idAccordion, ": codigo del acordion, ", codeBtn, ": codigo del boton");
   const refBet = useRef(null);
   const onClickMultiplied = () => {
-    if(Row.map(e=>e.codeBet).flat().includes(codeBet)){
-      return removerRowInRedux(codeBet, dispatch, Row);
+    
+    if(Row.map(e=>e.codeBtn).flat().includes(codeBtn)){
+      return removerRowInRedux(codeBtn, dispatch, Row);
     }
     //* Si la apuesta esta en el mismo acordion que una apuesta seleccionada del 
-    //*  mismo codigo, no agregar al redux
-    if(Row.map(e=>e.codigo).flat().includes(codigo) && NewArray(Row).map(b=>b.bets.map(b=>b.idAccordion)).flat().includes(idAccordion)){
+    //*  mismo codeBet, no agregar al redux
+    if(Row.map(e=>e.codeBet).flat().includes(codeBet) && NewArray(Row).map(b=>b.bets.map(b=>b.idAccordion)).flat().includes(idAccordion)){
       return ToastsStore.error("No puedes seleccionar esa apuesta", 3710);
     }
     AddinRedux(dispatch, Row, multiplied, event);
@@ -74,35 +63,21 @@ export const Bet = ({
   return (
     <>
       <ContainerBet
-        data-tip={`${stateunBet}  : :  x${multiplied}`}
         onClick={onClickMultiplied}
-        style={{
-          width: `${!isTabletOrMobile ? "100%" : "32%"}
-          `
-        }}
-        betSelect = {Row.map((e) => e.codeBet).flat().includes(codeBet)}
+        betSelect = {Row.map((e) => e.codeBtn).flat().includes(codeBtn)}
         className="containerBet"
         ref={refBet}
       >
-        <ReactTooltip effect="solid" />
         <div className="stateUnBet">
           <p>
             {stateunBet}
           </p>
-        </div>
-        <div className="multipliedBet">
-          <input
-            type="button"
-            className="inputMultiplied"
-            value={"x" + multiplied}
-          />
+          <p>
+            x{multiplied}
+          </p>
         </div>
       </ContainerBet>
 
-      <ToastsContainer
-        store={ToastsStore}
-        position={ToastsContainerPosition.BOTTOM_LEFT}
-      />
     </>
   );
 };
@@ -111,44 +86,31 @@ const ContainerBet = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
+  margin: 3px;
   cursor: pointer;
-  height: 50px;
   background-color: ${props=> props.betSelect? "green": "#37474f"};
-  .multipliedBet {
-    margin-top: 1rem;
-  }
-  // width: 100%; es para mediaquery
-  // width: 32%;
+  
+  
   border-bottom: 1px solid #37474f;
   .stateUnBet {
-    width: 80%;
+    width: 100%;
     white-space: nowrap;
     text-align: center;
+    padding: 5px 0;
     p {
       color: white;
       overflow: hidden;
       text-overflow: ellipsis;
-      font-size: 70%;
-      font-family: "Raleway", sans-serif;
-    }
-  }
-  .multipliedBet {
-    width: 100%;
-    display: flex;
-    .inputMultiplied {
-      border: none;
-      padding: 1px 5px;
-      font-size: 85%;
-
-      font-weight: bold;
-      cursor: pointer;
-      width: 100%;
-      heigth: 100%;
+      font-size: 11px;
+      font-family: font-family: 'Poppins', sans-serif;
+      font-weight: 400;
+      word-wrap: break-word;
     }
   }
   &:hover {
     border: none;
+    transition: all 0.5s;
     background-color: ${props=> props.betSelect? "green":"purple"};
     .multipliedBet {
     }

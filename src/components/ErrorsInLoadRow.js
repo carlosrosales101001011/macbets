@@ -1,10 +1,8 @@
 import React from 'react'
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 // import { DeleteLastBet } from '../action/BetInCartilla';
 
 export const ErrorsInLoadRow = () => {
-    const dispatch = useDispatch();
-    //dispatch(DeleteLastBet());
     const {maxRow} = useSelector((state) => state.showBet);
   return (
     <div className="message_alert_cartilla_llena">

@@ -35,4 +35,9 @@ export const types={
 
     uiCheckboxIsSelect: '[ui] Checkbox Select',
     uiCheckboxNotSelect: '[ui] Checkbox Not Select',
+    
+
+    uiSelectedSeeMore: '[ui] Selected',
+    uiobjSeeMore: '[ui] obj Selected',
+
 }

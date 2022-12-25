@@ -2,14 +2,10 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import "react-toggle/style.css"
 import { ComponentListFilter } from './makeFilter/ComponentListFilter';
-import { ComponentFiltersFilter } from './makeFilter/ComponentFiltersFilter';
 import { SearchFilter } from './makeFilter/SearchFilter';
-import { useDispatch, useSelector } from 'react-redux';
-import { AddinRedux, AddinReduxFiltros } from '../helpers/metodosReduxAddRemove';
 import { SecundaryFilter } from './makeFilter/SecundaryFilter';
 
 export const SectionFiltros = () => {
-  const dispatch = useDispatch();
   const PackSpecialsFilters=[
         {i: 1, 
           nameFilter: 'Futbolasa', 
@@ -52,7 +48,10 @@ export const SectionFiltros = () => {
     <ContainerFiltros clickvp={clickv} clickbp={clickb}>
       <SearchFilter/>
         <span>
-          <SecundaryFilter FilterName={"En vivo"} FilterUrl={"#"} principalFiltro/>
+        <SecundaryFilter FilterName={"En vivo"} FilterUrl={"#"} principalFiltro/>
+          <SecundaryFilter FilterName={"En breve"} FilterUrl={"#"} principalFiltro/>
+          <SecundaryFilter FilterName={"En breve"} FilterUrl={"#"} principalFiltro/>
+          <SecundaryFilter FilterName={"En breve"} FilterUrl={"#"} principalFiltro/>
           <SecundaryFilter FilterName={"En breve"} FilterUrl={"#"} principalFiltro/>
           {/* <label>
                 <input  name={"En vivo"} type={'checkbox'} value={"En_vivo"} onClick={clickedInput}/> 
@@ -72,15 +71,11 @@ export const SectionFiltros = () => {
 }
 const ContainerFiltros = styled.div`
     position: sticky;
-    bottom: 10px;
-    margin: 2px 1px 1px 20px;
-    // border: 1px solid black;
-    background-color: #e9e9e9;
+    // background-color: red;
+    top: 55px;
     height: 100%;
     // border-radius: 6px;
     padding: 6px 3px;
-    z-index: 1;
-
     span{
       label{
         display: flex;

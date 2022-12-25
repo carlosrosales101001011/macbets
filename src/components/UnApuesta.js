@@ -6,8 +6,8 @@ import { TimeProgressive } from "./makeATimeProgressive/TimeProgressive";
 import { Bet } from "./makeComponentBet/Bet";
 import { Modal } from "./Modal";
 
-export const UnApuesta = ({bet, titulo, subtitulo, fecha, hora, codigobet}) => {
-  //*TODO: ALGUN DIA MODIFICAR ESTE CODIGO SPAGUETY
+export const UnApuesta = ({bet, titulo, subtitulo, fecha, hora, codeBetbet}) => {
+  //*TODO: ALGUN DIA MODIFICAR ESTE codeBet SPAGUETY
   console.log(bet);
 
   const [stateModal1, setstateModal1] = useState(false);
@@ -29,7 +29,7 @@ export const UnApuesta = ({bet, titulo, subtitulo, fecha, hora, codigobet}) => {
     <div className="ApuestaMAC">
       <div className={"headboardContainer"}>
         <p>{titulo}: {subtitulo}</p>
-        <p className={'cod-Bet'}>#{codigobet}</p>
+        <p className={'cod-Bet'}>#{codeBetbet}</p>
         <TimeProgressive date={fecha} time={hora}/>
       </div>
       <div className="bodyContainer">
@@ -51,7 +51,7 @@ export const UnApuesta = ({bet, titulo, subtitulo, fecha, hora, codigobet}) => {
       >
           <div className={"headboardContainerModalTitle"}>
             <p>{titulo}: {subtitulo}</p>
-            <p className={'cod-Bet'}>#{codigobet}</p>
+            <p className={'cod-Bet'}>#{codeBetbet}</p>
             <TimeProgressive date={fecha} time={hora}/>
           </div>
           <div className="Accordion">

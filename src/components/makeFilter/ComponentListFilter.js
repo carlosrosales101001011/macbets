@@ -71,7 +71,7 @@ const UlFilter = styled.ul`
     flex-direction: row;
     justify-content: space-between;
     cursor: pointer;
-    padding: 12px 8px;
+    padding: 6px 8px;
     align-items: center;
     border-radius: 5px;
     &:hover{
